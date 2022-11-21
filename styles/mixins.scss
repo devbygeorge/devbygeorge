@@ -1,0 +1,13 @@
+// from 1400px and up
+@mixin desktop() {
+  @media (min-width: 1401px) {
+    @content;
+  }
+}
+
+// until 1400px
+@mixin mobile() {
+  @media (max-width: 1400px) {
+    @content;
+  }
+}

@@ -1,0 +1,111 @@
+@use "./fonts.scss";
+@use "./mixins.scss" as mix;
+
+// Root Variables
+:root {
+  --fs-headline: 62px;
+  --fs-subheadline: 32px;
+  --fs-body: 18px;
+  --fs-lables: 16px;
+  --fs-snippets: 14px;
+
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --btn-radius: 0.5rem;
+
+  --clr-primary: #01080e;
+  --clr-primary-2: #011627;
+  --clr-primary-3: #011221;
+  --clr-secondary: #607b96;
+  --clr-secondary-2: #3c9d93;
+  --clr-secondary-3: #4d5bce;
+  --clr-secondary-4: #ffffff;
+  --clr-accent: #fea55f;
+  --clr-accent-2: #43d9ad;
+  --clr-accent-3: #e99287;
+  --clr-accent-4: #c98bdf;
+  --clr-lines: #1e2d3d;
+  --clr-gradinets: #4d5bce;
+  --clr-gradinets-2: #43d9ad;
+}
+
+// Reset Styles
+html,
+body {
+  font-family: FiraCode;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+// Global Styles
+.container {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding: 0 1rem;
+}
+
+.button {
+  background-color: #1c2b3a;
+  color: var(--clr-secondary-4);
+  border: 1px solid transparent;
+  border-radius: var(--btn-radius);
+
+  &:hover {
+    background-color: #263b50;
+  }
+
+  &--primary {
+    background-color: var(--clr-accent);
+    color: var(--clr-primary);
+
+    &:hover {
+      background-color: #ffac68;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border-color: var(--clr-secondary-4);
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.social {
+  color: rgba(96, 123, 150, 0.4);
+
+  &:hover {
+    color: var(--clr-secondary);
+  }
+}
