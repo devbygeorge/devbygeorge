@@ -1,0 +1,30 @@
+.footer {
+  border-top: 1px solid var(--clr-lines);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .list {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr auto;
+  }
+
+  .item {
+    font-size: var(--fs-lables);
+    color: var(--clr-secondary);
+
+    border-right: 1px solid var(--clr-lines);
+    padding: 1.25rem;
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+}
