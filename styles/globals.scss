@@ -3,11 +3,11 @@
 
 // Root Variables
 :root {
-  --fs-headline: 62px;
-  --fs-subheadline: 32px;
-  --fs-body: 18px;
-  --fs-lables: 16px;
-  --fs-snippets: 14px;
+  --fs-headline: 4rem;
+  --fs-subheadline: 2rem;
+  --fs-body: 1.125rem;
+  --fs-lables: 1rem;
+  --fs-snippets: 0.875rem;
 
   --fw-light: 300;
   --fw-regular: 400;
@@ -16,10 +16,14 @@
   --fw-bold: 700;
 
   --btn-radius: 0.5rem;
+  --body-padding: 0.9375rem;
 
   --clr-primary: #01080e;
   --clr-primary-2: #011627;
   --clr-primary-3: #011221;
+  --clr-primary-4: #1c2b3a;
+  --clr-primary-5: #263b50;
+  --clr-primary-6: #010c15;
   --clr-secondary: #607b96;
   --clr-secondary-2: #3c9d93;
   --clr-secondary-3: #4d5bce;
@@ -28,21 +32,36 @@
   --clr-accent-2: #43d9ad;
   --clr-accent-3: #e99287;
   --clr-accent-4: #c98bdf;
+  --clr-accent-5: #ffac68;
   --clr-lines: #1e2d3d;
   --clr-gradinets: #4d5bce;
   --clr-gradinets-2: #43d9ad;
 }
 
 // Reset Styles
-html,
 body {
   font-family: FiraCode;
   font-size: var(--fs-body);
   font-weight: var(--fw-regular);
+
+  background-color: var(--clr-primary-6);
+  color: var(--clr-secondary-4);
+  padding: var(--body-padding);
+
+  @include mix.desktop {
+    --body-padding: 4.3125rem;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+  box-sizing: border-box;
 }
 
 a {
@@ -50,10 +69,8 @@ a {
   text-decoration: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+button {
+  color: inherit;
 }
 
 ul,
@@ -68,19 +85,19 @@ img {
 
 // Global Styles
 .container {
-  max-width: 1400px;
+  max-width: 87.5rem;
   margin-inline: auto;
   padding: 0 1rem;
 }
 
 .button {
-  background-color: #1c2b3a;
+  background-color: var(--clr-primary-4);
   color: var(--clr-secondary-4);
   border: 1px solid transparent;
   border-radius: var(--btn-radius);
 
   &:hover {
-    background-color: #263b50;
+    background-color: var(--clr-primary-5);
   }
 
   &--primary {
@@ -88,7 +105,7 @@ img {
     color: var(--clr-primary);
 
     &:hover {
-      background-color: #ffac68;
+      background-color: var(--clr-accent-5);
     }
   }
 
@@ -108,4 +125,12 @@ img {
   &:hover {
     color: var(--clr-secondary);
   }
+}
+
+.app {
+  position: relative;
+  min-height: calc(100vh - var(--body-padding) * 2);
+  background-color: var(--clr-primary-2);
+  border: 1px solid var(--clr-lines);
+  border-radius: 0.5rem;
 }
