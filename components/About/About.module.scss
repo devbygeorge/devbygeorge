@@ -1,0 +1,30 @@
+@use "@/styles/mixins" as mix;
+
+.about {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 3fr 3.5fr;
+
+  .activityBar {
+    border-right: 1px solid var(--clr-lines);
+  }
+
+  .sidebar {
+    border-right: 1px solid var(--clr-lines);
+  }
+
+  .sidebarWindow {
+  }
+
+  .editor {
+    border-right: 1px solid var(--clr-lines);
+  }
+
+  .editorList {
+    list-style-type: decimal;
+    padding-left: 4rem;
+  }
+
+  .output {
+  }
+}

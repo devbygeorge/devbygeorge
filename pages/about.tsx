@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AboutComponent from "@/components/About";
 
 export default function About() {
   return (
@@ -16,8 +17,8 @@ export default function About() {
       <Header />
 
       {/* Main Content */}
-      <main>
-        <h1>About Page</h1>
+      <main id="main" className="main">
+        <AboutComponent />
       </main>
 
       {/* Footer */}
