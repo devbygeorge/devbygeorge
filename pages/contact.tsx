@@ -3,11 +3,11 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-export default function Home() {
+export default function Contact() {
   return (
     <div className="app">
       <Head>
-        <title>Welcome - Giorgi Pasieshvili</title>
+        <title>Contact - Giorgi Pasieshvili</title>
         <meta name="description" content="Portfolio Giorgi Pasieshvili" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -17,7 +17,7 @@ export default function Home() {
 
       {/* Main Content */}
       <main>
-        <h1> Hello. I'm Web Developer.</h1>
+        <h1>Contact Page</h1>
       </main>
 
       {/* Footer */}
