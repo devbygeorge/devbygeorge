@@ -2,9 +2,15 @@
 
 .header {
   border-bottom: 1px solid var(--clr-lines);
+  transition: 0.3s;
+  z-index: 2;
+
+  &.active {
+    background-color: var(--clr-primary-2);
+  }
 
   .nav {
-    position: relative;
+    // position: relative;
     font-size: var(--fs-lables);
     color: var(--clr-secondary);
 
@@ -75,6 +81,7 @@
       top: 3.4rem;
       left: 0;
       right: 0;
+      bottom: 0;
 
       background-color: var(--clr-primary-2);
 

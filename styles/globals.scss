@@ -3,7 +3,7 @@
 
 // Root Variables
 :root {
-  --fs-headline: 4rem;
+  --fs-headline: 3.875rem;
   --fs-subheadline: 2rem;
   --fs-body: 1.125rem;
   --fs-lables: 1rem;
@@ -85,9 +85,9 @@ img {
 
 // Global Styles
 .container {
-  max-width: 87.5rem;
+  max-width: 75.125rem;
   margin-inline: auto;
-  padding: 0 1rem;
+  padding: 0 1.625rem;
 }
 
 .button {
@@ -128,9 +128,14 @@ img {
 }
 
 .app {
-  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+
   min-height: calc(100vh - var(--body-padding) * 2);
   background-color: var(--clr-primary-2);
   border: 1px solid var(--clr-lines);
   border-radius: 0.5rem;
+
+  position: relative;
+  overflow: hidden;
 }

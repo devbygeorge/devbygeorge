@@ -9,7 +9,7 @@ export default function Header({}: Props) {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header id="header" className={s.header}>
+    <header id="header" className={`${s.header} ${isMenuOpen ? s.active : ""}`}>
       <nav className={s.nav}>
         {/* Navigate Home */}
         <div className={s.home}>
