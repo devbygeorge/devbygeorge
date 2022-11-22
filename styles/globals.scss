@@ -46,15 +46,6 @@ body {
 
   background-color: var(--clr-primary-6);
   color: var(--clr-secondary-4);
-  padding: var(--body-padding);
-
-  @include mix.desktop {
-    --body-padding: 4.3125rem;
-  }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 * {
@@ -131,10 +122,9 @@ img {
   display: grid;
   grid-template-rows: auto 1fr auto;
 
-  min-height: calc(100vh - var(--body-padding) * 2);
+  min-height: 100vh;
   background-color: var(--clr-primary-2);
   border: 1px solid var(--clr-lines);
-  border-radius: 0.5rem;
 
   position: relative;
   overflow: hidden;
