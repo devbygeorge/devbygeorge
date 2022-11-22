@@ -14,7 +14,7 @@ export default function Footer({}: Props) {
             rel="noreferrer"
             href="https://facebook.com"
           >
-            <i className="ri-facebook-fill social"></i>
+            <i className={`ri-facebook-fill social ${s.icon}`}></i>
           </a>
         </li>
         <li className={s.item}>
@@ -24,7 +24,7 @@ export default function Footer({}: Props) {
             rel="noreferrer"
             href="https://www.linkedin.com/in/giorgipasieshvili"
           >
-            <i className="ri-linkedin-fill social"></i>
+            <i className={`ri-linkedin-fill social ${s.icon}`}></i>
           </a>
         </li>
         <li className={`${s.item} ${s.emptyItem}`}></li>
@@ -35,8 +35,8 @@ export default function Footer({}: Props) {
             rel="noreferrer"
             href="https://github.com/GiorgiPasieshvili"
           >
-            @GiorgiPasieshvili
-            <i className="ri-github-fill"></i>
+            <span className={s.username}>@GiorgiPasieshvili</span>
+            <i className={`ri-github-fill social ${s.icon} ${s.gitIcon}`}></i>
           </a>
         </li>
       </ul>

@@ -1,3 +1,5 @@
+@use "@/styles/mixins" as mix;
+
 .footer {
   border-top: 1px solid var(--clr-lines);
   position: absolute;
@@ -8,6 +10,10 @@
   .list {
     display: grid;
     grid-template-columns: auto auto auto 1fr auto;
+
+    @include mix.mobile {
+      grid-template-columns: 1fr auto auto auto;
+    }
   }
 
   .item {
@@ -22,9 +28,22 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
 
-    i {
-      font-size: 1.5rem;
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  @include mix.desktop {
+    .gitIcon {
+      color: var(--clr-secondary);
+    }
+  }
+
+  @include mix.mobile {
+    .emptyItem,
+    .username {
+      display: none;
     }
   }
 }
