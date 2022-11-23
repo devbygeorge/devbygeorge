@@ -2,29 +2,183 @@
 
 .about {
   height: 100%;
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 3fr 3.5fr;
+  color: var(--clr-secondary);
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: auto auto 7fr 7.7fr;
+  }
 
   .activityBar {
     border-right: 1px solid var(--clr-lines);
+    padding: 1.1875rem 1.4375rem;
+
+    @include mix.mobile {
+      display: none;
+    }
+  }
+
+  .activityBarList {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+  }
+
+  .activityBarItem {
+    display: inline-flex;
+    font-size: 1.5rem;
+    cursor: pointer;
+
+    &:nth-child(2) i {
+      color: var(--clr-secondary);
+    }
   }
 
   .sidebar {
     border-right: 1px solid var(--clr-lines);
+    font-size: var(--fs-lables);
+    line-height: 1;
   }
 
-  .sidebarWindow {
+  .sidebarHeadline {
+    display: flex;
+    align-items: center;
+    gap: 0.1875rem;
+
+    border-block: 1px solid var(--clr-lines);
+    padding: 0.375rem;
+    color: var(--clr-secondary-4);
+
+    i {
+      font-size: 2rem;
+    }
+  }
+
+  .sidebarWindow:first-child .sidebarHeadline {
+    border-top: none;
+  }
+
+  .sidebarList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.875rem;
+    padding: 1.25rem 1.5rem 1.5rem 0.875rem;
+  }
+
+  .sidebarItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    .active {
+      color: var(--clr-secondary-4);
+    }
+    .red {
+      color: var(--clr-accent-3);
+    }
+    .green {
+      color: var(--clr-accent-2);
+    }
+    .purple {
+      color: var(--clr-secondary-3);
+    }
+  }
+
+  .hiddenIcon {
+    visibility: hidden;
   }
 
   .editor {
     border-right: 1px solid var(--clr-lines);
+    overflow-x: auto;
   }
 
   .editorList {
-    list-style-type: decimal;
-    padding-left: 4rem;
+    padding: 1rem 4.75rem;
+    line-height: 1.5;
+    border-top: 1px solid var(--clr-lines);
+
+    @include mix.desktop {
+      min-width: 41.5rem;
+    }
+
+    @include mix.mobile {
+      display: none;
+    }
+
+    li {
+      padding-left: 0.75rem;
+    }
+
+    li::marker {
+      content: counter(list-item) "\a0\a0";
+    }
+  }
+
+  .editorParagraph {
+    padding: 1rem 2rem;
+    font-size: var(--fs-lables);
+
+    @include mix.desktop {
+      display: none;
+    }
+  }
+
+  .tabs {
+    display: flex;
+    align-items: stretch;
+    height: 2.75rem;
+  }
+
+  .tabItem {
+    display: inline-flex;
+    align-items: center;
+    gap: 3rem;
+
+    padding-inline: 0.85rem;
+    font-size: var(--fs-lables);
+    border-right: 1px solid var(--clr-lines);
+    line-height: 1;
+
+    i {
+      font-size: 1.15rem;
+    }
   }
 
   .output {
+    overflow-x: auto;
+  }
+
+  .outputContent {
+    padding: 1rem 2rem;
+    border-top: 1px solid var(--clr-lines);
+
+    @include mix.desktop {
+      min-width: 664px;
+    }
+  }
+
+  .comment {
+    margin-bottom: 2rem;
+  }
+
+  .snippet {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    font-size: var(--fs-snippets);
+
+    img {
+      width: 664px;
+    }
+  }
+
+  .userDetails {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
   }
 }
