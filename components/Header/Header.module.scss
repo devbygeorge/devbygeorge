@@ -104,16 +104,8 @@
 
   .item {
     @include mix.desktop {
-      border-right: 1px solid var(--clr-lines);
+      border-left: 1px solid var(--clr-lines);
       border-bottom: 3px solid transparent;
-
-      &:first-child {
-        border-left: 1px solid var(--clr-lines);
-      }
-
-      &:last-child {
-        border-left: none;
-      }
 
       &:hover {
         border-bottom-color: var(--clr-accent);

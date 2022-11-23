@@ -17,8 +17,12 @@
     font-size: var(--fs-lables);
     color: var(--clr-secondary);
 
-    border-right: 1px solid var(--clr-lines);
     padding: 1.25rem;
+    border-right: 1px solid var(--clr-lines);
+
+    &:last-child {
+      border-right: none;
+    }
   }
 
   .link {
