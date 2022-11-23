@@ -1,0 +1,21 @@
+:root {
+  scrollbar-color: var(--clr-secondary) transparent !important;
+}
+
+*::-webkit-scrollbar {
+  width: 20px; /* vertical scrollbar */
+  height: 20px; /* horizontal scrollbar */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-top: 1px solid var(--clr-lines);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--clr-secondary);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-primary-5);
+}
