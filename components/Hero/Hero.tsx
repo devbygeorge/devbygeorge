@@ -42,27 +42,27 @@ export default function Hero({}: Props) {
           <div className={s.images}>
             <img
               className={s.opacityLow}
-              src="/images/code-snippet.svg"
+              src="/images/code-snippet-n.svg"
               alt="code snippet"
             />
             <img
               className={s.opacityHalf}
-              src="/images/code-snippet.svg"
+              src="/images/code-snippet-n.svg"
               alt="code snippet"
             />
             <img
               className={s.opacityFull}
-              src="/images/code-snippet.svg"
+              src="/images/code-snippet-n.svg"
               alt="code snippet"
             />
             <img
               className={s.opacityHalf}
-              src="/images/code-snippet.svg"
+              src="/images/code-snippet-n.svg"
               alt="code snippet"
             />
             <img
               className={s.opacityLow}
-              src="/images/code-snippet.svg"
+              src="/images/code-snippet-n.svg"
               alt="code snippet"
             />
           </div>
