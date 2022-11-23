@@ -2,11 +2,14 @@
 
 .contact {
   height: 100%;
-  display: grid;
-  grid-template-columns: auto 1fr 1fr;
-  grid-template-rows: 2.75rem auto;
-  grid-template-areas: "sidebar tabs tabs" "sidebar formArea codeDisplay";
   color: var(--clr-secondary);
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: 2.75rem auto;
+    grid-template-areas: "sidebar tabs tabs" "sidebar formArea codeDisplay";
+  }
 
   .sidebar {
     grid-area: sidebar;
@@ -56,6 +59,10 @@
     grid-area: tabs;
     display: flex;
     align-items: stretch;
+
+    @include mix.mobile {
+      display: none;
+    }
   }
 
   .tabItem {
@@ -83,6 +90,10 @@
     justify-content: center;
 
     padding-top: 12vh;
+
+    @include mix.mobile {
+      padding: 2rem;
+    }
   }
 
   .inputWrapper {
@@ -117,6 +128,10 @@
     display: flex;
     justify-content: center;
     padding-top: 12vh;
+
+    @include mix.mobile {
+      display: none;
+    }
   }
 
   .codeList {
