@@ -2,6 +2,7 @@ import Head from "next/head";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ProjectsComponent from "@/components/Projects";
 
 export default function Projects() {
   return (
@@ -16,8 +17,8 @@ export default function Projects() {
       <Header />
 
       {/* Main Content */}
-      <main>
-        <h1>Projects Page</h1>
+      <main id="main" className="main">
+        <ProjectsComponent />
       </main>
 
       {/* Footer */}
