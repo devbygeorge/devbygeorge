@@ -1,5 +1,9 @@
 import Head from "next/head";
-import AboutComponent from "@/components/About";
+import s from "@/styles/About.module.scss";
+
+import ActivityBar from "@/components/ActivityBar";
+import Sidebar from "@/components/Sidebar";
+import Tabs from "@/components/Tabs";
 
 export default function About() {
   return (
@@ -9,7 +13,105 @@ export default function About() {
       </Head>
 
       <main id="main" className="main">
-        <AboutComponent />
+        <div className={s.about}>
+          <ActivityBar />
+          <Sidebar />
+          <Tabs />
+
+          <div className={s.wrapper}>
+            <div className={s.editor}>
+              <ul className={s.list}>
+                <li className={s.item}>/**</li>
+                <li className={s.item}>* About me</li>
+                <li className={s.item}>
+                  * I have 5 years of еxperience in web
+                </li>
+                <li className={s.item}>
+                  * development lorem ipsum dolor sit amet,
+                </li>
+                <li className={s.item}>
+                  * consectetur adipiscing elit, sed do eiusmod
+                </li>
+                <li className={s.item}>
+                  * tempor incididunt ut labore et dolore
+                </li>
+                <li className={s.item}>
+                  * magna aliqua. Ut enim ad minim veniam,
+                </li>
+                <li className={s.item}>
+                  * quis nostrud exercitation ullamco laboris
+                </li>
+                <li className={s.item}>
+                  * nisi ut aliquip ex ea commodo consequat.
+                </li>
+                <li className={s.item}>
+                  * Duis aute irure dolor in reprehenderit in
+                </li>
+                <li className={s.item}>*</li>
+                <li className={s.item}>
+                  * Duis aute irure dolor in reprehenderit in
+                </li>
+                <li className={s.item}>
+                  * voluptate velit esse cillum dolore eu fugiat
+                </li>
+                <li className={s.item}>
+                  * nulla pariatur. Excepteur sint occaecat
+                </li>
+                <li className={s.item}>
+                  * officia deserunt mollit anim id est laborum.
+                </li>
+                <li className={s.item}>*/</li>
+              </ul>
+              <p className={s.paragraph}>
+                I have 5 years of experience in web development lorem ipsum
+                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                aliquip ex ea commodo consequat. Duis aute irure dolor in
+                reprehenderit in. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                Excepteur sint occaecat officia deserunt mollit anim id est
+                laborum.
+              </p>
+            </div>
+
+            <div className={s.snippets}>
+              <div className={s.snippets_container}>
+                <p className={s.single_comment}>// Code snippet showcase:</p>
+                <div className={s.snippet}>
+                  <div className={s.user}>
+                    <span>img</span>
+                    <span>Snippet 1</span>
+                    <i className="ri-chat-smile-3-fill"></i>
+                    <span>details</span>
+                    <i className="ri-star-fill"></i>
+                    <span>stars</span>
+                  </div>
+                  <img
+                    className={s.snippet_img}
+                    src="/images/code-snippet-n.svg"
+                    alt="code snippet"
+                  />
+                </div>
+                <div className={s.snippet}>
+                  <div className={s.user}>
+                    <span>img</span>
+                    <span>Snippet 2</span>
+                    <i className="ri-chat-smile-3-fill"></i>
+                    <span>details</span>
+                    <i className="ri-star-line"></i>
+                    <span>stars</span>
+                  </div>
+                  <img
+                    className={s.snippet_img}
+                    src="/images/code-snippet-2.svg"
+                    alt="code snippet"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </>
   );

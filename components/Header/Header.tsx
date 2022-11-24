@@ -1,7 +1,6 @@
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 import s from "./Header.module.scss";
-import "remixicon/fonts/remixicon.css";
 
 type Props = {};
 

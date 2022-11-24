@@ -1,6 +1,6 @@
-@use "./fonts.scss";
-@use "./mixins.scss" as mix;
-@use "./scrollbar.scss";
+@use "./abstract/fonts.scss";
+@use "./abstract/mixins.scss" as mix;
+@use "./abstract/scrollbar.scss";
 
 /* Root Variables */
 :root {

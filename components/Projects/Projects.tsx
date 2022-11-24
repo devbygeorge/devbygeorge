@@ -1,6 +1,5 @@
 import React from "react";
 import s from "./Projects.module.scss";
-// import "remixicon/fonts/remixicon.css";
 
 type Props = {};
 

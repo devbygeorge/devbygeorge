@@ -1,7 +1,5 @@
 import React from "react";
-import Link from "next/link";
 import s from "./Contact.module.scss";
-// import "remixicon/fonts/remixicon.css";
 
 type Props = {};
 

@@ -1,0 +1,96 @@
+@use "./abstract/mixins.scss" as mix;
+
+.about {
+  height: 100%;
+  color: var(--clr-secondary);
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: 2.8rem 1fr;
+    grid-template-areas:
+      "activity sidebar tabs"
+      "activity sidebar wrapper";
+  }
+
+  .wrapper {
+    grid-area: wrapper;
+
+    @include mix.desktop {
+      display: grid;
+      grid-template-columns: 7fr 7.7fr;
+    }
+  }
+
+  .editor {
+    border-right: 1px solid var(--clr-lines);
+    overflow-x: auto;
+
+    padding: 1rem 2rem;
+
+    @include mix.desktop {
+      padding: 1rem 4.75rem;
+    }
+  }
+
+  .list {
+    line-height: 1.5;
+
+    @include mix.desktop {
+      min-width: 32rem;
+    }
+
+    @include mix.mobile {
+      display: none;
+    }
+  }
+
+  .item {
+    padding-left: 0.75rem;
+
+    &::marker {
+      content: counter(list-item) "\a0\a0";
+    }
+  }
+
+  .paragraph {
+    font-size: var(--fs-normal);
+
+    @include mix.desktop {
+      display: none;
+    }
+  }
+
+  .snippets {
+    overflow-x: auto;
+    padding: 1rem 2rem;
+  }
+
+  .snippets_container {
+    @include mix.desktop {
+      min-width: 32rem;
+    }
+  }
+
+  .single_comment {
+    margin-bottom: 2rem;
+  }
+
+  .snippet {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: var(--fs-small);
+  }
+
+  .snippet_img {
+    width: 41.5rem;
+  }
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
