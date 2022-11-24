@@ -14,7 +14,7 @@
   .sidebar {
     grid-area: sidebar;
     border-right: 1px solid var(--clr-lines);
-    font-size: var(--fs-lables);
+    font-size: var(--fs-normal);
     line-height: 1;
   }
 
@@ -25,7 +25,7 @@
 
     border-bottom: 1px solid var(--clr-lines);
     padding: 0.375rem;
-    color: var(--clr-secondary-4);
+    color: var(--clr-white);
 
     i {
       font-size: 2rem;
@@ -64,7 +64,7 @@
     gap: 3rem;
 
     padding-inline: 0.85rem;
-    font-size: var(--fs-lables);
+    font-size: var(--fs-normal);
     border-right: 1px solid var(--clr-lines);
     line-height: 1;
 
@@ -101,7 +101,7 @@
   }
 
   .cardName {
-    font-size: var(--fs-lables);
+    font-size: var(--fs-normal);
     margin-bottom: 0.75rem;
 
     span:first-child {
@@ -148,7 +148,7 @@
 
     button {
       padding: 0.5rem;
-      font-size: var(--fs-snippets);
+      font-size: var(--fs-small);
       cursor: pointer;
     }
   }

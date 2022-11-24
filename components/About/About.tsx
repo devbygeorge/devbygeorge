@@ -9,13 +9,13 @@ export default function About({}: Props) {
       <div className={s.activityBar}>
         <ul className={s.activityBarList}>
           <li className={s.activityBarItem}>
-            <i className="ri-terminal-box-fill social"></i>
+            <i className="ri-terminal-box-fill icon"></i>
           </li>
           <li className={s.activityBarItem}>
-            <i className="ri-user-4-fill social"></i>
+            <i className="ri-user-4-fill icon"></i>
           </li>
           <li className={s.activityBarItem}>
-            <i className="ri-gamepad-fill social"></i>
+            <i className="ri-gamepad-fill icon"></i>
           </li>
         </ul>
       </div>

@@ -11,7 +11,7 @@
 
   .nav {
     // position: relative;
-    font-size: var(--fs-lables);
+    font-size: var(--fs-normal);
     color: var(--clr-secondary);
 
     @include mix.desktop {
@@ -136,11 +136,11 @@
     }
 
     &:hover {
-      color: var(--clr-secondary-4);
+      color: var(--clr-white);
     }
 
     @include mix.mobile {
-      color: var(--clr-secondary-4);
+      color: var(--clr-white);
     }
   }
 }

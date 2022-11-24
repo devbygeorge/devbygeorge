@@ -2,22 +2,19 @@
 @use "./mixins.scss" as mix;
 @use "./scrollbar.scss";
 
-// Root Variables
+/* Root Variables */
 :root {
-  --fs-headline: 3.875rem;
-  --fs-subheadline: 2rem;
-  --fs-body: 1.125rem;
-  --fs-lables: 1rem;
-  --fs-snippets: 0.875rem;
+  --fs-small: 0.875rem;
+  --fs-normal: 1rem;
+  --fs-medium: 1.125rem;
+  --fs-large: 2rem;
+  --fs-xlarge: 3.875rem;
 
   --fw-light: 300;
   --fw-regular: 400;
   --fw-medium: 500;
   --fw-semibold: 600;
   --fw-bold: 700;
-
-  --btn-radius: 0.5rem;
-  --body-padding: 0.9375rem;
 
   --clr-primary: #01080e;
   --clr-primary-2: #011627;
@@ -28,25 +25,23 @@
   --clr-secondary: #607b96;
   --clr-secondary-2: #3c9d93;
   --clr-secondary-3: #4d5bce;
-  --clr-secondary-4: #ffffff;
   --clr-accent: #fea55f;
   --clr-accent-2: #43d9ad;
   --clr-accent-3: #e99287;
   --clr-accent-4: #c98bdf;
   --clr-accent-5: #ffac68;
   --clr-lines: #1e2d3d;
-  --clr-gradinets: #4d5bce;
-  --clr-gradinets-2: #43d9ad;
+  --clr-white: #ffffff;
 }
 
-// Reset Styles
+/* Reset Styles */
 body {
   font-family: FiraCode;
-  font-size: var(--fs-body);
+  font-size: var(--fs-medium);
   font-weight: var(--fw-regular);
 
   background-color: var(--clr-primary-6);
-  color: var(--clr-secondary-4);
+  color: var(--clr-white);
 }
 
 * {
@@ -62,7 +57,9 @@ a {
 }
 
 button {
+  border: none;
   color: inherit;
+  cursor: pointer;
 }
 
 ul,
@@ -75,18 +72,18 @@ img {
   object-fit: cover;
 }
 
-// Global Styles
+/* Global Styles */
 .container {
-  max-width: 75.125rem;
+  max-width: 75rem;
   margin-inline: auto;
-  padding: 0 1.625rem;
+  padding-inline: 1.5rem;
 }
 
 .button {
   background-color: var(--clr-primary-4);
-  color: var(--clr-secondary-4);
+  color: var(--clr-white);
   border: 1px solid transparent;
-  border-radius: var(--btn-radius);
+  border-radius: 0.5rem;
 
   &:hover {
     background-color: var(--clr-primary-5);
@@ -103,7 +100,7 @@ img {
 
   &--ghost {
     background-color: transparent;
-    border-color: var(--clr-secondary-4);
+    border-color: var(--clr-white);
 
     &:hover {
       border-color: rgba(255, 255, 255, 0.5);
@@ -111,7 +108,7 @@ img {
   }
 }
 
-.social {
+.icon {
   color: rgba(96, 123, 150, 0.4);
 
   &:hover {
