@@ -1,4 +1,6 @@
 import Head from "next/head";
+import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import s from "@/styles/Contact.module.scss";
 
 import Tabs from "@/components/Tabs";
@@ -35,9 +37,36 @@ const sidebarData = [
   },
 ];
 
+type Fields = {
+  name: string;
+  email: string;
+  message: string;
+};
+
 export default function Contact() {
-  const handleForm = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const [isSubmitDisabled, setSubmitDisabled] = useState(false);
+  const { register, handleSubmit, reset, watch } = useForm<Fields>();
+  const onSubmit: SubmitHandler<Fields> = async (data) => {
+    setSubmitDisabled(true);
+
+    const res = await fetch("/api/mail", {
+      method: "post",
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        message: data.message,
+      }),
+    });
+
+    // Show correct responses
+    if (res.status === 200) {
+      console.log("success");
+    } else {
+      console.log("error");
+    }
+
+    reset();
+    setSubmitDisabled(false);
   };
 
   return (
@@ -53,12 +82,17 @@ export default function Contact() {
 
           <div className={s.wrapper}>
             <div className={s.form_wrapper}>
-              <form className={s.form} onSubmit={handleForm}>
+              <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
                 <div className={s.field_wrapper}>
                   <label className={s.label} htmlFor="name">
                     _name:
                   </label>
-                  <input className={s.field} type="text" name="name" required />
+                  <input
+                    className={s.field}
+                    type="text"
+                    required
+                    {...register("name")}
+                  />
                 </div>
                 <div className={s.field_wrapper}>
                   <label className={s.label} htmlFor="email">
@@ -67,8 +101,8 @@ export default function Contact() {
                   <input
                     className={s.field}
                     type="email"
-                    name="email"
                     required
+                    {...register("email")}
                   />
                 </div>
                 <div className={s.field_wrapper}>
@@ -78,11 +112,16 @@ export default function Contact() {
                   <textarea
                     rows={5}
                     className={s.field}
-                    name="message"
                     required
+                    {...register("message")}
                   ></textarea>
                 </div>
-                <button className={`${s.submit} button`} type="submit">
+                <button
+                  className={`${s.submit} button ${
+                    isSubmitDisabled ? s.disabled : ""
+                  }`}
+                  type="submit"
+                >
                   submit-message
                 </button>
               </form>
@@ -91,20 +130,83 @@ export default function Contact() {
             <div className={s.display}>
               <ul className={s.display_list}>
                 <li className={s.display_item}>
-                  const button = document.querySelector('#sendBtn');
+                  <span className={s.magenta}>const </span>
+                  <span className={s.purple}>button </span>
+                  <span className={s.magenta}>= </span>
+                  <span className={s.purple}>{"document.querySelector("}</span>
+                  <span className={s.brown}>'#sendBtn'</span>
+                  <span>{");"}</span>
                 </li>
                 <li className={s.display_item}></li>
-                <li className={s.display_item}>const message = {"{"}</li>
-                <li className={s.display_item}>name: "Jonathan Davis",</li>
-                <li className={s.display_item}>email: "",</li>
-                <li className={s.display_item}>message: "",</li>
-                <li className={s.display_item}>date: "Thu 21 Apr"</li>
+                <li className={s.display_item}>
+                  <span className={s.magenta}>const </span>
+                  <span className={s.purple}>message </span>
+                  <span className={s.magenta}>= </span>
+                  <span>{"{"}</span>
+                </li>
+                <li className={s.display_item}>
+                  <span style={{ marginLeft: "1rem" }} className={s.purple}>
+                    name
+                  </span>
+                  <span>: </span>
+                  <span className={s.brown}>"{watch("name")}"</span>
+                  <span>,</span>
+                </li>
+                <li className={s.display_item}>
+                  <span style={{ marginLeft: "1rem" }} className={s.purple}>
+                    email
+                  </span>
+                  <span>: </span>
+                  <span className={s.brown}>"{watch("email")}"</span>
+                  <span>,</span>
+                </li>
+                <li className={s.display_item}>
+                  <span style={{ marginLeft: "1rem" }} className={s.purple}>
+                    message
+                  </span>
+                  <span>: </span>
+                  <span className={s.brown}>"{watch("message")}"</span>
+                  <span>,</span>
+                </li>
+                <li className={s.display_item}>
+                  <span style={{ marginLeft: "1rem" }} className={s.purple}>
+                    date
+                  </span>
+                  <span>: </span>
+                  <span className={s.brown}>
+                    "
+                    {new Date().toLocaleDateString("en-US", {
+                      weekday: "short",
+                      year: undefined,
+                      month: "short",
+                      day: "numeric",
+                    })}
+                    "
+                  </span>
+                  <span>,</span>
+                </li>
                 <li className={s.display_item}>{"}"}</li>
                 <li className={s.display_item}></li>
                 <li className={s.display_item}>
-                  button.addEventListener{"('click', () => {"}
+                  <span className={s.purple}>button</span>
+                  <span>.</span>
+                  <span className={s.purple}>addEventListener</span>
+                  <span>{"("}</span>
+                  <span className={s.brown}>"click"</span>
+                  <span>{", () "}</span>
+                  <span className={s.magenta}>{"=> "}</span>
+                  <span>{"{"}</span>
                 </li>
-                <li className={s.display_item}>form.send(message);</li>
+                <li className={s.display_item}>
+                  <span style={{ marginLeft: "1rem" }} className={s.purple}>
+                    form
+                  </span>
+                  <span>.</span>
+                  <span className={s.purple}>send</span>
+                  <span>{"("}</span>
+                  <span className={s.purple}>message</span>
+                  <span>{");"}</span>
+                </li>
                 <li className={s.display_item}>{"})"}</li>
               </ul>
             </div>

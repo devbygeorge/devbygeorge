@@ -16,7 +16,7 @@
 
     @include mix.desktop {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1.25fr;
     }
   }
 
@@ -35,7 +35,8 @@
   .form {
     display: flex;
     flex-direction: column;
-    width: 23rem;
+    max-width: 23rem;
+    width: 100%;
   }
 
   .field_wrapper {
@@ -63,10 +64,17 @@
     align-self: flex-start;
   }
 
+  .disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
   .display {
     display: flex;
     justify-content: center;
-    padding: 12vh 2rem;
+    padding: 12vh 0;
+
+    overflow-x: auto;
 
     @include mix.mobile {
       display: none;
@@ -74,10 +82,25 @@
   }
 
   .display_list {
-    padding-left: 3.5rem;
+    padding-inline: 8rem 5rem;
   }
 
-  .display_item::marker {
-    content: counter(list-item) "\a0\a0";
+  .display_item {
+    padding-left: 1.5rem;
+    &::marker {
+      content: counter(list-item) "\a0\a0";
+    }
+  }
+
+  .purple {
+    color: var(--clr-secondary-4);
+  }
+
+  .magenta {
+    color: var(--clr-accent-4);
+  }
+
+  .brown {
+    color: var(--clr-accent);
   }
 }
