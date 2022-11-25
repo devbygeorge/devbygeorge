@@ -4,7 +4,10 @@
   grid-area: tabs;
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid var(--clr-lines);
+
+  @include mix.desktop {
+    border-bottom: 1px solid var(--clr-lines);
+  }
 }
 
 .item {
@@ -13,9 +16,21 @@
   gap: 3rem;
 
   padding-inline: 0.85rem;
-  border-right: 1px solid var(--clr-lines);
   font-size: var(--fs-normal);
   line-height: 1;
+
+  @include mix.desktop {
+    border-right: 1px solid var(--clr-lines);
+  }
+
+  @include mix.mobile {
+    margin: 0.5rem 1.25rem;
+    color: var(--clr-white);
+
+    i {
+      display: none;
+    }
+  }
 
   i {
     font-size: 1.15rem;
