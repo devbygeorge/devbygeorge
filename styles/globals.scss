@@ -80,7 +80,10 @@ img {
 }
 
 .button {
+  padding: 0.5rem;
   background-color: var(--clr-primary-4);
+
+  font-size: var(--fs-small);
   color: var(--clr-white);
   border: 1px solid transparent;
   border-radius: 0.5rem;

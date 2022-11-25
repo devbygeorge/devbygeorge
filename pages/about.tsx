@@ -5,6 +5,61 @@ import ActivityBar from "@/components/ActivityBar";
 import Sidebar from "@/components/Sidebar";
 import Tabs from "@/components/Tabs";
 
+const sidebarData = [
+  {
+    title: "personal-info",
+    type: "fileSystem",
+    items: [
+      {
+        icon: "ri-folder-3-fill",
+        label: "bio",
+        isDir: true,
+        color: "#e99287",
+        arrowIcon: "ri-arrow-right-s-line",
+        isActive: true,
+      },
+      {
+        icon: "ri-folder-3-fill",
+        label: "interests",
+        isDir: true,
+        color: "#43d9ad",
+        arrowIcon: "ri-arrow-right-s-line",
+      },
+      {
+        icon: "ri-folder-3-fill",
+        label: "education",
+        isDir: true,
+        color: "#4d5bce",
+        arrowIcon: "ri-arrow-down-s-line",
+      },
+      {
+        icon: "ri-markdown-fill",
+        label: "high-school",
+        isDir: false,
+      },
+      {
+        icon: "ri-markdown-fill",
+        label: "college",
+        isDir: false,
+      },
+    ],
+  },
+  {
+    title: "contacts",
+    type: "default",
+    items: [
+      {
+        icon: "ri-mail-fill",
+        label: "giopasieshvili2@gmail.com",
+      },
+      {
+        icon: "ri-phone-fill",
+        label: "+3598246359",
+      },
+    ],
+  },
+];
+
 export default function About() {
   return (
     <>
@@ -15,8 +70,8 @@ export default function About() {
       <main id="main" className="main">
         <div className={s.about}>
           <ActivityBar />
-          <Sidebar />
-          <Tabs />
+          <Sidebar data={sidebarData} />
+          <Tabs label="personal-info" />
 
           <div className={s.wrapper}>
             <div className={s.editor}>

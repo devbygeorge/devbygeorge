@@ -1,59 +1,81 @@
 import s from "./Sidebar.module.scss";
 
-type Props = {};
+type Props = {
+  data: Window[];
+};
 
-export default function Sidebar({}: Props) {
+type Window = {
+  title: string;
+  type: string;
+  items: Item[];
+};
+
+type Item = {
+  icon: string;
+  label: string;
+  isDir?: boolean;
+  color?: string;
+  arrowIcon?: string;
+  isActive?: boolean;
+};
+
+export default function Sidebar({ data }: Props) {
+  const renderItems = (type: string, items: Item[]) => {
+    if (type === "checkbox") {
+      return items.map((item, i) => (
+        <li key={i} className={s.item}>
+          <i className="ri-checkbox-blank-line"></i>
+          <i className={item.icon}></i>
+          <span>{item.label}</span>
+        </li>
+      ));
+    }
+
+    if (type === "fileSystem") {
+      return items.map((item, i) => {
+        if (item.isDir) {
+          return (
+            <li key={i} className={s.item}>
+              <i className={item.arrowIcon}></i>
+              <i style={{ color: item.color }} className={item.icon}></i>
+              <span
+                className={`${s.label} ${item.isActive ? s.label_active : ""}`}
+              >
+                {item.label}
+              </span>
+            </li>
+          );
+        } else {
+          return (
+            <li key={i} className={s.item}>
+              <i className={`ri-arrow-down-s-line ${s.icon_hidden}`}></i>
+              <i className="ri-markdown-fill"></i>
+              <span className={s.label}>{item.label}</span>
+            </li>
+          );
+        }
+      });
+    }
+
+    return items.map((item, i) => (
+      <li key={i} className={s.item}>
+        <i className={item.icon}></i>
+        <span className={s.label}>{item.label}</span>
+      </li>
+    ));
+  };
+
   return (
     <div className={s.container}>
-      <div className={s.window}>
-        <h2 className={s.headline}>
-          <i className="ri-arrow-drop-down-fill"></i>
-          <span>personal-info</span>
-        </h2>
-        <ul className={s.list}>
-          <li className={s.item}>
-            <i className="ri-arrow-right-s-line"></i>
-            <i className={`ri-folder-3-fill ${s.icon_red}`}></i>
-            <span className={`${s.label} ${s.label_active}`}>bio</span>
-          </li>
-          <li className={s.item}>
-            <i className="ri-arrow-right-s-line"></i>
-            <i className={`ri-folder-3-fill ${s.icon_green}`}></i>
-            <span className={s.label}>interests</span>
-          </li>
-          <li className={s.item}>
-            <i className="ri-arrow-down-s-line"></i>
-            <i className={`ri-folder-3-fill ${s.icon_purple}`}></i>
-            <span className={s.label}>education</span>
-          </li>
-          <li className={s.item}>
-            <i className={`ri-arrow-down-s-line ${s.icon_hidden}`}></i>
-            <i className="ri-markdown-fill"></i>
-            <span className={s.label}>high-school</span>
-          </li>
-          <li className={s.item}>
-            <i className={`ri-arrow-down-s-line ${s.icon_hidden}`}></i>
-            <i className="ri-markdown-fill"></i>
-            <span className={s.label}>college</span>
-          </li>
-        </ul>
-      </div>
-      <div className={s.window}>
-        <h2 className={s.headline}>
-          <i className="ri-arrow-drop-down-fill"></i>
-          <span>contacts</span>
-        </h2>
-        <ul className={s.list}>
-          <li className={s.item}>
-            <i className="ri-mail-fill"></i>
-            <span className={s.label}>giopasieshvili2@gmail.com</span>
-          </li>
-          <li className={s.item}>
-            <i className="ri-phone-fill"></i>
-            <span className={s.label}>+3598246359</span>
-          </li>
-        </ul>
-      </div>
+      {data.map(({ title, type, items }, i) => (
+        <div key={i} className={s.window}>
+          <h2 className={s.headline}>
+            <i className="ri-arrow-drop-down-fill"></i>
+            <span>{title}</span>
+          </h2>
+          <ul className={s.list}>{renderItems(type, items)}</ul>
+        </div>
+      ))}
     </div>
   );
 }

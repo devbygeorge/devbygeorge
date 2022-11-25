@@ -1,0 +1,76 @@
+@use "@/styles/abstract/mixins" as mix;
+
+.projects {
+  height: 100%;
+  color: var(--clr-secondary);
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 2.8rem auto;
+    grid-template-areas:
+      "sidebar tabs"
+      "sidebar grid";
+  }
+
+  .grid {
+    grid-area: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 1.5rem;
+
+    @include mix.desktop {
+      flex-direction: row;
+      align-items: flex-start;
+      padding: 5rem;
+    }
+  }
+
+  .card_title {
+    font-size: var(--fs-normal);
+    margin-bottom: 0.75rem;
+
+    span:first-child {
+      margin-right: 1rem;
+      font-weight: var(--fw-bold);
+      color: #5565e8;
+    }
+  }
+
+  .card {
+    max-width: 22.5rem;
+    background-color: var(--clr-primary-3);
+    border: 1px solid var(--clr-lines);
+    border-radius: 1rem;
+    position: relative;
+  }
+
+  .card_icon {
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1.75rem;
+    height: 1.75rem;
+    background-color: var(--clr-secondary-2);
+    color: var(--clr-primary-3);
+    border-radius: 2px;
+  }
+
+  .card_text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    padding: 1rem 1.5rem 1.5rem;
+    line-height: 1.5;
+  }
+}

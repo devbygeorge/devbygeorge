@@ -12,7 +12,9 @@ export default function Header({}: Props) {
       <nav className={s.nav}>
         {/* Navigate Home */}
         <div className={s.home}>
-          <Link href="/">giorgi-pasieshvili</Link>
+          <Link href="/" onClick={() => setMenuOpen(false)}>
+            giorgi-pasieshvili
+          </Link>
 
           {/* Toggle Button */}
           <button
@@ -27,23 +29,39 @@ export default function Header({}: Props) {
         {/* Menu List */}
         <ul className={`${s.list} ${isMenuOpen ? s.listActive : ""}`}>
           <li className={s.item}>
-            <Link className={s.link} href="/">
+            <Link
+              className={s.link}
+              href="/"
+              onClick={() => setMenuOpen(false)}
+            >
               _hello
             </Link>
           </li>
           <li className={s.item}>
-            <Link className={s.link} href="/about">
+            <Link
+              className={s.link}
+              href="/about"
+              onClick={() => setMenuOpen(false)}
+            >
               _about-me
             </Link>
           </li>
           <li className={s.item}>
-            <Link className={s.link} href="/projects">
+            <Link
+              className={s.link}
+              href="/projects"
+              onClick={() => setMenuOpen(false)}
+            >
               _projects
             </Link>
           </li>
           <li className={`${s.item} ${s.emptyItem}`}></li>
           <li className={s.item}>
-            <Link className={s.link} href="/contact">
+            <Link
+              className={s.link}
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
+            >
               _contact-me
             </Link>
           </li>
