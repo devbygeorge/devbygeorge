@@ -83,8 +83,8 @@ export default function Projects() {
           <Tabs label="React; Vue" />
 
           <div className={s.grid}>
-            {data.map((project) => (
-              <div className={s.card_wrapper}>
+            {data.map((project, i) => (
+              <div key={i} className={s.card_wrapper}>
                 <div className={s.card_title}>
                   <span>{project.title}</span>
                   <span>// {project.type}</span>
