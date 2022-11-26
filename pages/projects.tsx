@@ -1,6 +1,9 @@
 import Head from "next/head";
 import s from "@/styles/Projects.module.scss";
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 import Sidebar from "@/components/Sidebar";
 import Tabs from "@/components/Tabs";
 
@@ -72,6 +75,8 @@ export default function Projects() {
         <title>Projects - Giorgi Pasieshvili</title>
       </Head>
 
+      <Header />
+
       <main id="main" className="main">
         <div className={s.projects}>
           <Sidebar data={sidebarData} />
@@ -99,6 +104,8 @@ export default function Projects() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

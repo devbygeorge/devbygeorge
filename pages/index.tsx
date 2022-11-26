@@ -1,12 +1,25 @@
 import Head from "next/head";
 import s from "@/styles/Hero.module.scss";
 
-export default function Home() {
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+import { GetStaticProps } from "next";
+import { Social } from "typings";
+import { fetchSocials } from "utils/fetchSocials";
+
+type Props = {
+  socials: Social[];
+};
+
+export default function Home({ socials }: Props) {
   return (
     <>
       <Head>
         <title>Welcome - Giorgi Pasieshvili</title>
       </Head>
+
+      <Header />
 
       <main id="main" className="main">
         <div className={s.hero}>
@@ -78,6 +91,22 @@ export default function Home() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const socials: Social[] = await fetchSocials();
+
+  return {
+    props: {
+      socials,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a requst comes in
+    // - At most once every 10 seconds
+    revalidate: 10,
+  };
+};

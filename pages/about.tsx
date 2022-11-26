@@ -1,6 +1,9 @@
 import Head from "next/head";
 import s from "@/styles/About.module.scss";
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 import ActivityBar from "@/components/ActivityBar";
 import Sidebar from "@/components/Sidebar";
 import Tabs from "@/components/Tabs";
@@ -66,6 +69,8 @@ export default function About() {
       <Head>
         <title>About - Giorgi Pasieshvili</title>
       </Head>
+
+      <Header />
 
       <main id="main" className="main">
         <div className={s.about}>
@@ -168,6 +173,8 @@ export default function About() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }

@@ -3,6 +3,9 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import s from "@/styles/Contact.module.scss";
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 import Tabs from "@/components/Tabs";
 import Sidebar from "@/components/Sidebar";
 
@@ -74,6 +77,8 @@ export default function Contact() {
       <Head>
         <title>Contact - Giorgi Pasieshvili</title>
       </Head>
+
+      <Header />
 
       <main id="main" className="main">
         <div className={s.contact}>
@@ -213,6 +218,8 @@ export default function Contact() {
           </div>
         </div>
       </main>
+
+      <Footer />
     </>
   );
 }
