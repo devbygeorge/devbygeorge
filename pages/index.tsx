@@ -13,6 +13,8 @@ type Props = {
 };
 
 export default function Home({ socials }: Props) {
+  console.log(socials);
+
   return (
     <>
       <Head>
