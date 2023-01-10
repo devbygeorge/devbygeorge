@@ -16,6 +16,7 @@
 /build
 
 sanity/node_modules
+sanity/dist
 
 # misc
 .DS_Store
