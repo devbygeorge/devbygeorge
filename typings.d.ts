@@ -29,6 +29,9 @@ export interface Project extends SanityBody {
   title: string;
   description: string;
   image: Image;
+  demo: string;
+  github: string;
+  tech: array;
 }
 
 export interface Social extends SanityBody {

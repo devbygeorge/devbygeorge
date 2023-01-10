@@ -7,6 +7,11 @@ import Footer from "@/components/Footer";
 import Sidebar from "@/components/Sidebar";
 import Tabs from "@/components/Tabs";
 
+import { GetStaticProps } from "next";
+import { Project } from "typings";
+import { fetchProjects } from "utils/fetchProjects";
+import { urlFor } from "sanity";
+
 const data = [
   {
     title: "Project 1",
@@ -68,7 +73,13 @@ const sidebarData = [
   },
 ];
 
-export default function Projects() {
+type Props = {
+  projects: Project[];
+};
+
+export default function Projects({ projects }: Props) {
+  console.log(projects);
+
   return (
     <>
       <Head>
@@ -83,20 +94,39 @@ export default function Projects() {
           <Tabs label="React; Vue" />
 
           <div className={s.grid}>
-            {data.map((project, i) => (
+            {projects.map((project, i) => (
               <div key={i} className={s.card_wrapper}>
                 <div className={s.card_title}>
                   <span>{project.title}</span>
-                  <span>// {project.type}</span>
+                  <span>// {project.category}</span>
                 </div>
                 <div className={s.card}>
-                  <img src={project.img} alt="card img" />
+                  <img
+                    className={s.card_image}
+                    src={urlFor(project.image).url()}
+                    alt={project.title}
+                  />
                   <div className={s.card_icon}>
-                    <i className={`ri-${project.tech}-fill`}></i>
+                    <i className={`ri-${project.tech[0].slug}-fill`}></i>
                   </div>
                   <div className={s.card_text}>
-                    <p>Duis aute irure dolor in velit esse cillum dolore.</p>
-                    <button className="button">view-project</button>
+                    <p>{project.description}</p>
+                    <div className={s.buttons}>
+                      <a
+                        target="_blank"
+                        href={project.github}
+                        className="button"
+                      >
+                        view-project
+                      </a>
+                      <a
+                        target="_blank"
+                        href={project.demo}
+                        className={`button ${s.demo}`}
+                      >
+                        view-demo
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -109,3 +139,17 @@ export default function Projects() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const projects: Project[] = await fetchProjects();
+
+  return {
+    props: {
+      projects,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a requst comes in
+    // - At most once every 10 seconds
+    revalidate: 10,
+  };
+};

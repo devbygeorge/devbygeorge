@@ -16,17 +16,34 @@
   .grid {
     grid-area: grid;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 1.5rem;
+    flex-wrap: wrap;
+    column-gap: 4rem;
+    row-gap: 5rem;
+    padding: 5rem;
 
-    @include mix.desktop {
-      flex-direction: row;
-      align-items: flex-start;
-      padding: 5rem;
+    @include mix.mobile {
+      padding: 2.5rem;
+      row-gap: 2.5rem;
     }
+  }
+
+  .card_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    max-width: 22.5rem;
+    flex: 1;
+
+    background-color: var(--clr-primary-3);
+    border: 1px solid var(--clr-lines);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
   }
 
   .card_title {
@@ -38,14 +55,6 @@
       font-weight: var(--fw-bold);
       color: #5565e8;
     }
-  }
-
-  .card {
-    max-width: 22.5rem;
-    background-color: var(--clr-primary-3);
-    border: 1px solid var(--clr-lines);
-    border-radius: 1rem;
-    position: relative;
   }
 
   .card_icon {
@@ -67,10 +76,25 @@
   .card_text {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: flex-start;
+    flex: 1;
     gap: 1rem;
 
     padding: 1rem 1.5rem 1.5rem;
     line-height: 1.5;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .demo {
+    background-color: #5565e8;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 }
