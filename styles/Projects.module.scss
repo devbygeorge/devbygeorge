@@ -30,7 +30,6 @@
     row-gap: 5rem;
 
     @include mix.mobile {
-      padding: 2.5rem;
       row-gap: 2.5rem;
     }
   }
