@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import s from "@/styles/Projects.module.scss";
 
 import Header from "@/components/Header";
@@ -12,73 +13,58 @@ import { Project } from "typings";
 import { fetchProjects } from "utils/fetchProjects";
 import { urlFor } from "sanity";
 
-const data = [
-  {
-    title: "Project 1",
-    type: "_ui-animations",
-    img: "/images/card-1.png",
-    desc: "Duis aute irure dolor in velit esse cillum dolore.",
-    tech: "reactjs",
-  },
-  {
-    title: "Project 2",
-    type: "_tetris-game",
-    img: "/images/card-2.png",
-    desc: "Duis aute irure dolor in velit esse cillum dolore.",
-    tech: "reactjs",
-  },
-  {
-    title: "Project 3",
-    type: "_etherium",
-    img: "/images/card-3.png",
-    desc: "Duis aute irure dolor in velit esse cillum dolore.",
-    tech: "reactjs",
-  },
-];
-
-const sidebarData = [
-  {
-    title: "projects",
-    type: "checkbox",
-    items: [
-      {
-        icon: "ri-reactjs-fill",
-        label: "React",
-      },
-      {
-        icon: "ri-html5-fill",
-        label: "HTML",
-      },
-      {
-        icon: "ri-css3-fill",
-        label: "CSS",
-      },
-      {
-        icon: "ri-vuejs-fill",
-        label: "Vue",
-      },
-      {
-        icon: "ri-angularjs-fill",
-        label: "Angular",
-      },
-      {
-        icon: "ri-gatsby-fill",
-        label: "Gatsby",
-      },
-      {
-        icon: "ri-flutter-fill",
-        label: "Flutter",
-      },
-    ],
-  },
-];
-
 type Props = {
   projects: Project[];
 };
 
+type Item = {
+  key?: string;
+  name: string;
+  slug: string;
+};
+
 export default function Projects({ projects }: Props) {
-  console.log(projects);
+  const [checkedTech, setCheckedTech] = useState<string[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  useEffect(() => {
+    setFilteredProjects(() => {
+      if (!checkedTech.length) {
+        return projects;
+      }
+
+      return projects.filter((project) => {
+        const checkedTechInProject = project.tech.filter(
+          (item: Item) => checkedTech.indexOf(item.slug) > -1
+        );
+
+        if (checkedTechInProject.length) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    });
+  }, [checkedTech]);
+
+  // Merge same tech from projects
+  const tech: any = [];
+  projects.forEach((project) => {
+    project.tech.forEach((item: Item) => {
+      if (!tech.find((arrayItem: Item) => arrayItem.slug === item.slug)) {
+        tech.push({ name: item.name, slug: item.slug });
+      }
+    });
+  });
+
+  // Prepare sidebar data
+  const sidebarData = [
+    {
+      title: "projects",
+      type: "checkbox",
+      items: tech,
+    },
+  ];
 
   return (
     <>
@@ -90,47 +76,52 @@ export default function Projects({ projects }: Props) {
 
       <main id="main" className="main">
         <div className={s.projects}>
-          <Sidebar data={sidebarData} />
+          <Sidebar data={sidebarData} setCheckedTech={setCheckedTech} />
           <Tabs label="React; Vue" />
-
-          <div className={s.grid}>
-            {projects.map((project, i) => (
-              <div key={i} className={s.card_wrapper}>
-                <div className={s.card_title}>
-                  <span>{project.title}</span>
-                  <span>// {project.category}</span>
-                </div>
-                <div className={s.card}>
-                  <img
-                    className={s.card_image}
-                    src={urlFor(project.image).url()}
-                    alt={project.title}
-                  />
-                  <div className={s.card_icon}>
-                    <i className={`ri-${project.tech[0].slug}-fill`}></i>
+          <div className={s.projects_wrapper}>
+            <div className={s.grid}>
+              {filteredProjects.map((project, i) => (
+                <div key={i} className={s.card_wrapper}>
+                  <div className={s.card_title}>
+                    <span>{project.title}</span>
+                    <span>// {project.category}</span>
                   </div>
-                  <div className={s.card_text}>
-                    <p>{project.description}</p>
-                    <div className={s.buttons}>
-                      <a
-                        target="_blank"
-                        href={project.github}
-                        className="button"
-                      >
-                        view-project
-                      </a>
-                      <a
-                        target="_blank"
-                        href={project.demo}
-                        className={`button ${s.demo}`}
-                      >
-                        view-demo
-                      </a>
+                  <div className={s.card}>
+                    <img
+                      className={s.card_image}
+                      src={urlFor(project.image).url()}
+                      alt={project.title}
+                    />
+                    <div className={s.card_text}>
+                      <p>{project.description}</p>
+                      <ul className={s.card_tech}>
+                        {project.tech.map((item: Item) => (
+                          <li key={item.key} className={s.card_tech_item}>
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className={s.buttons}>
+                        <a
+                          target="_blank"
+                          href={project.github}
+                          className="button"
+                        >
+                          view-project
+                        </a>
+                        <a
+                          target="_blank"
+                          href={project.demo}
+                          className={`button ${s.demo}`}
+                        >
+                          view-demo
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </main>

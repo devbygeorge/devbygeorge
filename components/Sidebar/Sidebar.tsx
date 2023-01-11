@@ -2,6 +2,7 @@ import s from "./Sidebar.module.scss";
 
 type Props = {
   data: Window[];
+  setCheckedTech?: any;
 };
 
 type Window = {
@@ -19,14 +20,32 @@ type Item = {
   isActive?: boolean;
 };
 
-export default function Sidebar({ data }: Props) {
-  const renderItems = (type: string, items: Item[]) => {
+export default function Sidebar({ data, setCheckedTech }: Props) {
+  const renderItems = (type: string, items: any[]) => {
     if (type === "checkbox") {
       return items.map((item, i) => (
         <li key={i} className={s.item}>
-          <i className="ri-checkbox-blank-line"></i>
-          <i className={item.icon}></i>
-          <span>{item.label}</span>
+          <label className="checkbox-wrapper">
+            <input
+              type="checkbox"
+              value={item.slug}
+              onChange={(e) => {
+                if (e.target.checked) {
+                  setCheckedTech((state: any) => {
+                    return [...state, e.target.value];
+                  });
+                } else {
+                  setCheckedTech((state: any) => {
+                    return state.filter(
+                      (item: string) => item !== e.target.value
+                    );
+                  });
+                }
+              }}
+            />
+            <span className="checkmark"></span>
+          </label>
+          <span>{item.name}</span>
         </li>
       ));
     }

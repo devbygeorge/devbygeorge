@@ -10,17 +10,24 @@
     grid-template-rows: 2.8rem auto;
     grid-template-areas:
       "sidebar tabs"
-      "sidebar grid";
+      "sidebar projects";
+  }
+
+  .projects_wrapper {
+    grid-area: projects;
+    padding: 5rem;
+
+    @include mix.mobile {
+      padding: 2.5rem;
+    }
   }
 
   .grid {
-    grid-area: grid;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     column-gap: 4rem;
     row-gap: 5rem;
-    padding: 5rem;
 
     @include mix.mobile {
       padding: 2.5rem;
@@ -57,32 +64,30 @@
     }
   }
 
-  .card_icon {
-    position: absolute;
-    right: 1.25rem;
-    top: 1.25rem;
-
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 1.75rem;
-    height: 1.75rem;
-    background-color: var(--clr-secondary-2);
-    color: var(--clr-primary-3);
-    border-radius: 2px;
-  }
-
   .card_text {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: flex-start;
-    flex: 1;
     gap: 1rem;
+    flex: 1;
 
     padding: 1rem 1.5rem 1.5rem;
     line-height: 1.5;
+  }
+
+  .card_tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: auto;
+  }
+
+  .card_tech_item {
+    padding: 0.15rem 0.35rem;
+    background-color: var(--clr-secondary);
+    color: var(--clr-primary-4);
+    border-radius: 2px;
+    font-size: 0.9rem;
   }
 
   .buttons {
