@@ -44,8 +44,8 @@ export default function Sidebar({ data, setCheckedTech }: Props) {
               }}
             />
             <span className="checkmark"></span>
+            <span>{item.name}</span>
           </label>
-          <span>{item.name}</span>
         </li>
       ));
     }
