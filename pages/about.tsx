@@ -8,6 +8,10 @@ import ActivityBar from "@/components/ActivityBar";
 import Sidebar from "@/components/Sidebar";
 import Tabs from "@/components/Tabs";
 
+import { GetStaticProps } from "next";
+import { PageInfo } from "typings";
+import { fetchPageInfo } from "utils/fetchPageInfo";
+
 const sidebarData = [
   {
     title: "personal-info",
@@ -63,7 +67,13 @@ const sidebarData = [
   },
 ];
 
-export default function About() {
+type Props = {
+  pageInfo: PageInfo;
+};
+
+export default function About({ pageInfo }: Props) {
+  const aboutSplitted = pageInfo.about.match(/.{0,47}/g);
+
   return (
     <>
       <Head>
@@ -83,56 +93,14 @@ export default function About() {
               <ul className={s.list}>
                 <li className={s.item}>/**</li>
                 <li className={s.item}>* About me</li>
-                <li className={s.item}>
-                  * I have 5 years of еxperience in web
-                </li>
-                <li className={s.item}>
-                  * development lorem ipsum dolor sit amet,
-                </li>
-                <li className={s.item}>
-                  * consectetur adipiscing elit, sed do eiusmod
-                </li>
-                <li className={s.item}>
-                  * tempor incididunt ut labore et dolore
-                </li>
-                <li className={s.item}>
-                  * magna aliqua. Ut enim ad minim veniam,
-                </li>
-                <li className={s.item}>
-                  * quis nostrud exercitation ullamco laboris
-                </li>
-                <li className={s.item}>
-                  * nisi ut aliquip ex ea commodo consequat.
-                </li>
-                <li className={s.item}>
-                  * Duis aute irure dolor in reprehenderit in
-                </li>
-                <li className={s.item}>*</li>
-                <li className={s.item}>
-                  * Duis aute irure dolor in reprehenderit in
-                </li>
-                <li className={s.item}>
-                  * voluptate velit esse cillum dolore eu fugiat
-                </li>
-                <li className={s.item}>
-                  * nulla pariatur. Excepteur sint occaecat
-                </li>
-                <li className={s.item}>
-                  * officia deserunt mollit anim id est laborum.
-                </li>
+                {aboutSplitted?.map((item, i) => (
+                  <li className={s.item} key={i}>
+                    * {item}
+                  </li>
+                ))}
                 <li className={s.item}>*/</li>
               </ul>
-              <p className={s.paragraph}>
-                I have 5 years of experience in web development lorem ipsum
-                dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                aliquip ex ea commodo consequat. Duis aute irure dolor in
-                reprehenderit in. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat officia deserunt mollit anim id est
-                laborum.
-              </p>
+              <p className={s.paragraph}>{pageInfo.about}</p>
             </div>
 
             <div className={s.snippets}>
@@ -178,3 +146,17 @@ export default function About() {
     </>
   );
 }
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const pageInfo: PageInfo = await fetchPageInfo();
+
+  return {
+    props: {
+      pageInfo,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a requst comes in
+    // - At most once every 10 seconds
+    revalidate: 10,
+  };
+};

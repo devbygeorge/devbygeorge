@@ -15,12 +15,7 @@ interface Image {
 
 export interface PageInfo extends SanityBody {
   _type: "pageInfo";
-  heroTitle: string;
-  heroImage: Image;
-  aboutTitle: string;
-  aboutInfo: string;
-  aboutImage: Image;
-  contactText: string;
+  about: string;
 }
 
 export interface Project extends SanityBody {
