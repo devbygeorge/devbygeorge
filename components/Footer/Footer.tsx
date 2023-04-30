@@ -33,9 +33,9 @@ export default function Footer({}: Props) {
             className={s.link}
             target="_blank"
             rel="noreferrer"
-            href="https://github.com/GiorgiPasieshvili"
+            href="https://github.com/devbygeorge"
           >
-            <span className={s.username}>@GiorgiPasieshvili</span>
+            <span className={s.username}>@devbygeorge</span>
             <i className={`ri-github-fill icon ${s.icon} ${s.gitIcon}`}></i>
           </a>
         </li>

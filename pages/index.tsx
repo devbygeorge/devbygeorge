@@ -42,11 +42,11 @@ export default function Home({ socials }: Props) {
                   <span className={s.variableQuota}>"</span>
                   <a
                     className={s.variableString}
-                    href="https://github.com/GiorgiPasieshvili"
+                    href="https://github.com/devbygeorge"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    https://github.com/GiorgiPasieshvili
+                    https://github.com/devbygeorge
                   </a>
                   <span className={s.variableQuota}>"</span>
                 </p>
