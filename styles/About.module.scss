@@ -29,7 +29,7 @@
     padding: 1rem 2rem;
 
     @include mix.desktop {
-      padding: 1rem 4.75rem;
+      padding: 1rem 2.5rem 1rem 3.75rem;
     }
   }
 
@@ -37,7 +37,7 @@
     line-height: 1.5;
 
     @include mix.desktop {
-      min-width: 32rem;
+      min-width: 39.25rem;
     }
 
     @include mix.mobile {
@@ -46,7 +46,7 @@
   }
 
   .item {
-    padding-left: 0.75rem;
+    // padding-left: 0.75rem;
 
     &::marker {
       content: counter(list-item) "\a0\a0";
