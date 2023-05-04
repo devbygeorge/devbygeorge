@@ -96,7 +96,7 @@ export default function Projects({ projects }: Props) {
                       <p>{project.description}</p>
                       <ul className={s.card_tech}>
                         {project.tech.map((item: Item) => (
-                          <li key={item.key} className={s.card_tech_item}>
+                          <li key={item.slug} className={s.card_tech_item}>
                             {item.name}
                           </li>
                         ))}
