@@ -38,6 +38,11 @@
   align-items: flex-start;
   gap: 0.875rem;
   padding: 1.25rem 1.5rem 1.5rem 0.875rem;
+
+  @include mix.mobile {
+    max-height: 200px;
+    overflow-y: auto;
+  }
 }
 
 .item {

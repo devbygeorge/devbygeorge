@@ -24,8 +24,10 @@
   }
 
   @include mix.mobile {
-    margin: 0.5rem 1.25rem;
-    color: var(--clr-white);
+    // display: none;
+    width: 100%;
+    border-block: 1px solid var(--clr-lines);
+    padding: 1rem 2rem;
 
     i {
       display: none;
