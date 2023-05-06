@@ -15,22 +15,27 @@
 
   .projects_wrapper {
     grid-area: projects;
-    padding: 5rem;
-
-    @include mix.mobile {
-      padding: 2.5rem;
-    }
+    padding: 3rem;
   }
 
   .grid {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    column-gap: 4rem;
-    row-gap: 5rem;
+    display: grid;
+    gap: 3rem;
 
-    @include mix.mobile {
-      row-gap: 2.5rem;
+    @include mix.tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mix.small-screen {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mix.desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include mix.big-screen {
+      grid-template-columns: repeat(6, 1fr);
     }
   }
 
@@ -42,7 +47,6 @@
   .card {
     display: flex;
     flex-direction: column;
-    max-width: 22.5rem;
     flex: 1;
 
     background-color: var(--clr-primary-3);
@@ -79,6 +83,7 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     margin-bottom: auto;
+    padding-bottom: 1rem;
   }
 
   .card_tech_item {
