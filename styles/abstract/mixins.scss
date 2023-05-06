@@ -1,13 +1,31 @@
+@mixin big-screen() {
+  @media (min-width: 140em) {
+    @content;
+  }
+}
+
 // from 1400px and up
 @mixin desktop() {
-  @media (min-width: 75.125em) {
+  @media (min-width: 100.025em) {
+    @content;
+  }
+}
+
+@mixin small-screen() {
+  @media (min-width: 60em) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width: 45em) {
     @content;
   }
 }
 
 // until 1400px
 @mixin mobile() {
-  @media (max-width: 75em) {
+  @media (max-width: 100em) {
     @content;
   }
 }
