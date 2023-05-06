@@ -43,7 +43,7 @@
     display: block;
     font-size: var(--fs-xlarge);
     margin-left: -0.25rem;
-    line-height: 1;
+    margin-bottom: 0.25rem;
 
     @include mix.mobile {
       --fs-xlarge: 2.5rem;

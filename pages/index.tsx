@@ -27,9 +27,9 @@ export default function Home({ socials }: Props) {
             <div className={s.text}>
               <h1 className={s.headline}>
                 <span className={s.textWelcome}>Hi all. I am</span>
-                <span className={s.textName}>George Pasieshvili</span>
+                <span className={s.textName}>George</span>
                 <span className={s.textRole}>
-                  <i className="ri-arrow-right-s-line"></i> Front-end developer
+                  <i className="ri-arrow-right-s-line"></i> Software engineer
                 </span>
               </h1>
 
