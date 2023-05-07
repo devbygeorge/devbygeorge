@@ -72,7 +72,7 @@ type Props = {
 };
 
 export default function About({ pageInfo }: Props) {
-  const aboutSplitted = pageInfo.about.match(/.{0,57}/g);
+  const aboutSplitted = pageInfo.about.match(/.{0,55}\b/g);
 
   return (
     <>
