@@ -16,11 +16,19 @@
   .projects_wrapper {
     grid-area: projects;
     padding: 3rem;
+
+    @include mix.mobile {
+      padding: 2rem;
+    }
   }
 
   .grid {
     display: grid;
     gap: 3rem;
+
+    @include mix.mobile {
+      gap: 2rem;
+    }
 
     @include mix.tablet {
       grid-template-columns: repeat(2, 1fr);
