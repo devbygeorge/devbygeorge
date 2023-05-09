@@ -1,0 +1,36 @@
+@use "@/styles/abstract/mixins" as mix;
+
+.editorWindow {
+  grid-area: editor-window;
+  position: relative;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  border-right: 1px solid var(--clr-lines);
+
+  @include mix.desktop {
+    padding-inline: 4.5rem 2.5rem;
+    overflow-x: auto;
+    min-width: 42rem;
+  }
+}
+
+.editorLinesList {
+  display: none;
+  line-height: 1.5;
+
+  @include mix.desktop {
+    display: block;
+  }
+}
+
+.editorLineItem::marker {
+  content: counter(list-item) "\a0\a0";
+}
+
+.editorParagraph {
+  font-size: var(--fs-normal);
+
+  @include mix.desktop {
+    display: none;
+  }
+}

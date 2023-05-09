@@ -1,0 +1,78 @@
+@use "@/styles/abstract/mixins" as mix;
+
+.contactArea {
+  grid-area: contact-area;
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+  }
+}
+
+.window {
+  display: grid;
+  justify-items: center;
+  padding: 2rem;
+
+  @include mix.desktop {
+    padding: 12vh 2rem;
+  }
+
+  &[data-type="form"] {
+    border-right: 1px solid var(--clr-lines);
+  }
+
+  &[data-type="output"] {
+    @include mix.mobile {
+      display: none;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @include mix.desktop {
+    max-width: 23rem;
+  }
+}
+
+.formControl {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.formField {
+  padding: 0.6rem;
+  background-color: var(--clr-primary-3);
+
+  font-size: var(--fs-normal);
+  color: var(--clr-secondary);
+
+  border: 1px solid var(--clr-lines);
+  border-radius: 0.5rem;
+  outline: none;
+  resize: none;
+}
+
+.formSubmit {
+  padding: 0.65rem 0.75rem;
+  align-self: flex-start;
+}
+
+.output {
+  display: flex;
+  flex-direction: column;
+}
+
+.outputLine {
+  padding-left: 1rem;
+
+  &::marker {
+    content: counter(list-item) "\a0\a0";
+  }
+}

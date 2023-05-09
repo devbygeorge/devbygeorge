@@ -1,6 +1,6 @@
 @use "@/styles/abstract/mixins" as mix;
 
-.container {
+.sidebar {
   grid-area: sidebar;
   border-right: 1px solid var(--clr-lines);
   font-size: var(--fs-normal);

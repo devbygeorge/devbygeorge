@@ -26,12 +26,25 @@ export interface Project extends SanityBody {
   image: Image;
   demo: string;
   github: string;
-  tech: array;
+  categories: Category[];
 }
 
 export interface Social extends SanityBody {
   _type: "social";
-  title: string;
+  name: string;
+  slug: string;
   url: string;
   icon: Image;
+}
+
+export interface Category extends SanityBody {
+  name: string;
+  slug: string;
+  icon: Image;
+}
+
+export interface ContactFields {
+  name: string;
+  email: string;
+  message: string;
 }

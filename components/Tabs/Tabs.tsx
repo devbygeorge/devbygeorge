@@ -1,15 +1,15 @@
 import s from "./Tabs.module.scss";
 
 type Props = {
-  label: String;
+  label: string;
 };
 
 export default function Tabs({ label }: Props) {
   return (
-    <div className={s.container}>
+    <div className={s.tabs}>
       <div className={s.item}>
         <span>{label || "example"}</span>
-        <i className="ri-close-line"></i>
+        <i className={`ri-close-line ${s.icon}`}></i>
       </div>
     </div>
   );

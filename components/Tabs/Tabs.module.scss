@@ -1,9 +1,9 @@
 @use "@/styles/abstract/mixins" as mix;
 
-.container {
+.tabs {
   grid-area: tabs;
   display: flex;
-  align-items: stretch;
+  height: 2.8rem;
 
   @include mix.desktop {
     border-bottom: 1px solid var(--clr-lines);
@@ -19,22 +19,21 @@
   font-size: var(--fs-normal);
   line-height: 1;
 
+  @include mix.mobile {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-block: 1px solid var(--clr-lines);
+  }
+
   @include mix.desktop {
     border-right: 1px solid var(--clr-lines);
   }
+}
+
+.icon {
+  font-size: 1.15rem;
 
   @include mix.mobile {
-    // display: none;
-    width: 100%;
-    border-block: 1px solid var(--clr-lines);
-    padding: 1rem 2rem;
-
-    i {
-      display: none;
-    }
-  }
-
-  i {
-    font-size: 1.15rem;
+    display: none;
   }
 }

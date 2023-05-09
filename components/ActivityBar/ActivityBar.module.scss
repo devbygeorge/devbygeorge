@@ -1,26 +1,15 @@
 @use "@/styles/abstract/mixins" as mix;
 
 .container {
-  grid-area: activity;
+  grid-area: activity-bar;
+  padding: 1.25rem 1.5rem;
   border-right: 1px solid var(--clr-lines);
-  padding: 1.2rem 1.45rem;
 
   @include mix.mobile {
     display: none;
   }
-}
 
-.list {
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
-}
-
-.item {
-  display: inline-flex;
-  font-size: 1.5rem;
-}
-
-.active_icon {
-  color: var(--clr-secondary);
+  gap: 2.1rem;
 }

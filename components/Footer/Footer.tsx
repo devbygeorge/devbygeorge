@@ -1,10 +1,8 @@
 import s from "./Footer.module.scss";
 
-type Props = {};
-
-export default function Footer({}: Props) {
+export default function Footer() {
   return (
-    <footer id="footer" className={s.footer}>
+    <footer className={s.footer}>
       <ul className={s.list}>
         <li className={s.item}>find me in:</li>
         <li className={s.item}>
@@ -12,9 +10,9 @@ export default function Footer({}: Props) {
             className={s.link}
             target="_blank"
             rel="noreferrer"
-            href="https://facebook.com"
+            href="https://twitter.com/devbygeorge"
           >
-            <i className={`ri-facebook-fill icon ${s.icon}`}></i>
+            <i className="ri-twitter-fill icon"></i>
           </a>
         </li>
         <li className={s.item}>
@@ -24,10 +22,10 @@ export default function Footer({}: Props) {
             rel="noreferrer"
             href="https://www.linkedin.com/in/giorgipasieshvili"
           >
-            <i className={`ri-linkedin-fill icon ${s.icon}`}></i>
+            <i className="ri-linkedin-fill icon"></i>
           </a>
         </li>
-        <li className={`${s.item} ${s.emptyItem}`}></li>
+        <li className={s.emptyItem}></li>
         <li className={s.item}>
           <a
             className={s.link}
@@ -36,7 +34,7 @@ export default function Footer({}: Props) {
             href="https://github.com/devbygeorge"
           >
             <span className={s.username}>@devbygeorge</span>
-            <i className={`ri-github-fill icon ${s.icon} ${s.gitIcon}`}></i>
+            <i className="ri-github-fill icon" data-active-desktop="true"></i>
           </a>
         </li>
       </ul>

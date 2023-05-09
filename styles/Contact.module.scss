@@ -1,106 +1,14 @@
 @use "@/styles/abstract/mixins" as mix;
 
 .contact {
-  height: 100%;
   color: var(--clr-secondary);
 
   @include mix.desktop {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: 2.8rem auto;
-    grid-template-areas: "sidebar tabs" "sidebar wrapper";
-  }
-
-  .wrapper {
-    grid-area: wrapper;
-
-    @include mix.desktop {
-      display: grid;
-      grid-template-columns: 1fr 1.25fr;
-    }
-  }
-
-  .form_wrapper {
-    display: flex;
-    justify-content: center;
-
-    padding: 12vh 2rem;
-    border-right: 1px solid var(--clr-lines);
-
-    @include mix.mobile {
-      padding: 2rem;
-    }
-  }
-
-  .form {
-    display: flex;
-    flex-direction: column;
-    max-width: 23rem;
-    width: 100%;
-  }
-
-  .field_wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .field {
-    padding: 0.6rem;
-    background-color: var(--clr-primary-3);
-
-    font-size: var(--fs-normal);
-    color: var(--clr-secondary);
-
-    border: 1px solid var(--clr-lines);
-    border-radius: 0.5rem;
-    outline: none;
-    resize: none;
-  }
-
-  .submit {
-    padding: 0.65rem 0.75rem;
-    align-self: flex-start;
-  }
-
-  .disabled {
-    pointer-events: none;
-    opacity: 0.4;
-  }
-
-  .display {
-    display: flex;
-    justify-content: center;
-    padding: 12vh 0;
-
-    overflow-x: auto;
-
-    @include mix.mobile {
-      display: none;
-    }
-  }
-
-  .display_list {
-    padding-inline: 8rem 5rem;
-  }
-
-  .display_item {
-    padding-left: 1.5rem;
-    &::marker {
-      content: counter(list-item) "\a0\a0";
-    }
-  }
-
-  .purple {
-    color: var(--clr-secondary-4);
-  }
-
-  .magenta {
-    color: var(--clr-accent-4);
-  }
-
-  .brown {
-    color: var(--clr-accent);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "sidebar tabs"
+      "sidebar contact-area";
   }
 }

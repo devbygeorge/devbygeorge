@@ -1,26 +1,29 @@
+import { Category } from "typings";
+
 import s from "./Sidebar.module.scss";
 
 type Props = {
   data: Window[];
-  setCheckedTech?: any;
+  setChosenCategories?: any;
 };
 
 type Window = {
   title: string;
   type: string;
-  items: Item[];
+  items: Item[] | Category[];
 };
 
 type Item = {
-  icon: string;
-  label: string;
+  icon?: string;
+  label?: string;
+  name?: string;
   isDir?: boolean;
   color?: string;
   arrowIcon?: string;
   isActive?: boolean;
 };
 
-export default function Sidebar({ data, setCheckedTech }: Props) {
+export default function Sidebar({ data, setChosenCategories }: Props) {
   const renderItems = (type: string, items: any[]) => {
     if (type === "checkbox") {
       return items.map((item, i) => (
@@ -31,11 +34,11 @@ export default function Sidebar({ data, setCheckedTech }: Props) {
               value={item.slug}
               onChange={(e) => {
                 if (e.target.checked) {
-                  setCheckedTech((state: any) => {
+                  setChosenCategories((state: any) => {
                     return [...state, e.target.value];
                   });
                 } else {
-                  setCheckedTech((state: any) => {
+                  setChosenCategories((state: any) => {
                     return state.filter(
                       (item: string) => item !== e.target.value
                     );
@@ -85,7 +88,7 @@ export default function Sidebar({ data, setCheckedTech }: Props) {
   };
 
   return (
-    <div className={s.container}>
+    <div className={s.sidebar}>
       {data.map(({ title, type, items }, i) => (
         <div key={i} className={s.window}>
           <h2 className={s.headline}>

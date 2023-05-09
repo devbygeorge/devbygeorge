@@ -1,67 +1,68 @@
-import Link from "next/link";
+"use client";
+
 import { useState } from "react";
+
+import Link from "next/link";
+
 import s from "./Header.module.scss";
 
-type Props = {};
-
-export default function Header({}: Props) {
+export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen((state) => !state);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
-    <header id="header" className={`${s.header} ${isMenuOpen ? s.active : ""}`}>
+    <header className={s.header} data-active={isMenuOpen ? "true" : "false"}>
+      {/* Navigation */}
       <nav className={s.nav}>
-        {/* Navigate Home */}
-        <div className={s.home}>
-          <Link href="/" onClick={() => setMenuOpen(false)}>
+        {/* Heading/Logo */}
+        <h1 className={s.logo}>
+          <Link href="/" onClick={closeMenu}>
             giorgi-pasieshvili
           </Link>
+        </h1>
 
-          {/* Toggle Button */}
-          <button
-            onClick={() => setMenuOpen((state) => !state)}
-            className={`${s.toggle} ${isMenuOpen ? s.toggleActive : ""}`}
-          >
-            <i className="ri-menu-line"></i>
-            <i className="ri-close-line"></i>
-          </button>
-        </div>
+        {/* Mobile Toggle */}
+        <button className={s.toggle} onClick={toggleMenu}>
+          <i
+            className="ri-menu-line small-transition-mobile"
+            data-active={isMenuOpen ? "false" : "true"}
+          />
+          <i
+            className="ri-close-line small-transition-mobile"
+            data-active={isMenuOpen ? "true" : "false"}
+          />
+        </button>
 
-        {/* Menu List */}
-        <ul className={`${s.list} ${isMenuOpen ? s.listActive : ""}`}>
+        {/* Navigation Menu */}
+        <ul
+          className={`${s.menu} small-transition-mobile`}
+          data-active={isMenuOpen ? "true" : "false"}
+        >
           <li className={s.item}>
-            <Link
-              className={s.link}
-              href="/"
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link className={s.link} href="/" onClick={closeMenu}>
               _hello
             </Link>
           </li>
           <li className={s.item}>
-            <Link
-              className={s.link}
-              href="/about"
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link className={s.link} href="/about" onClick={closeMenu}>
               _about-me
             </Link>
           </li>
           <li className={s.item}>
-            <Link
-              className={s.link}
-              href="/projects"
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link className={s.link} href="/projects" onClick={closeMenu}>
               _projects
             </Link>
           </li>
-          <li className={`${s.item} ${s.emptyItem}`}></li>
+          <li className={s.emptyItem}></li>
           <li className={s.item}>
-            <Link
-              className={s.link}
-              href="/contact"
-              onClick={() => setMenuOpen(false)}
-            >
+            <Link className={s.link} href="/contact" onClick={closeMenu}>
               _contact-me
             </Link>
           </li>

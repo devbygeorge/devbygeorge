@@ -1,29 +1,32 @@
-@mixin big-screen() {
-  @media (min-width: 140em) {
-    @content;
-  }
-}
-
-// from 1400px and up
-@mixin desktop() {
-  @media (min-width: 100.025em) {
-    @content;
-  }
-}
-
+// After 720px
 @mixin small-screen() {
-  @media (min-width: 60em) {
-    @content;
-  }
-}
-
-@mixin tablet() {
   @media (min-width: 45em) {
     @content;
   }
 }
 
-// until 1400px
+// After 960px
+@mixin medium-screen() {
+  @media (min-width: 60em) {
+    @content;
+  }
+}
+
+// After 2240px
+@mixin large-screen() {
+  @media (min-width: 140em) {
+    @content;
+  }
+}
+
+// After 1601px
+@mixin desktop() {
+  @media (min-width: 100.0625em) {
+    @content;
+  }
+}
+
+// Until 1600px
 @mixin mobile() {
   @media (max-width: 100em) {
     @content;

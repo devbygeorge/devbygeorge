@@ -1,21 +1,11 @@
 import s from "./ActivityBar.module.scss";
 
-type Props = {};
-
-export default function ActivityBar({}: Props) {
+export default function ActivityBar() {
   return (
     <div className={s.container}>
-      <ul className={s.list}>
-        <li className={s.item}>
-          <i className="ri-terminal-box-fill icon"></i>
-        </li>
-        <li className={s.item}>
-          <i className={`ri-user-4-fill icon ${s.active_icon}`}></i>
-        </li>
-        <li className={s.item}>
-          <i className="ri-gamepad-fill icon"></i>
-        </li>
-      </ul>
+      <i className="ri-terminal-box-fill icon"></i>
+      <i className="ri-user-4-fill icon" data-active="true"></i>
+      <i className="ri-gamepad-fill icon"></i>
     </div>
   );
 }

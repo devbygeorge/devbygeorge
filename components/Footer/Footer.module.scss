@@ -1,23 +1,22 @@
 @use "@/styles/abstract/mixins" as mix;
 
 .footer {
-  border-top: 1px solid var(--clr-lines);
   z-index: 2;
+  border-top: 1px solid var(--clr-lines);
 
   .list {
     display: grid;
-    grid-template-columns: auto auto auto 1fr auto;
+    grid-template-columns: 1fr auto auto auto;
 
-    @include mix.mobile {
-      grid-template-columns: 1fr auto auto auto;
+    @include mix.desktop {
+      grid-template-columns: auto auto auto 1fr auto;
     }
   }
 
   .item {
+    padding: 1.25rem;
     font-size: var(--fs-normal);
     color: var(--clr-secondary);
-
-    padding: 1.25rem;
     border-right: 1px solid var(--clr-lines);
 
     &:last-child {
@@ -25,20 +24,14 @@
     }
   }
 
+  .emptyItem {
+    border-right: 1px solid var(--clr-lines);
+  }
+
   .link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-
-  .icon {
-    font-size: 1.5rem;
-  }
-
-  @include mix.desktop {
-    .gitIcon {
-      color: var(--clr-secondary);
-    }
   }
 
   @include mix.mobile {

@@ -1,0 +1,118 @@
+@use "@/styles/abstract/mixins" as mix;
+
+.home {
+  padding-inline: 1.5rem;
+  overflow: hidden;
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: auto 33.75rem; // 540px
+    gap: 11.5rem; // 184px
+    margin-inline: auto;
+  }
+}
+
+.leftColumn {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+
+  @include mix.desktop {
+    justify-content: center;
+    gap: 5.3rem; // 84.8px
+  }
+}
+
+.introWelcome {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #e5e9f0;
+}
+
+.introName {
+  display: block;
+  font-size: var(--fs-xlarge);
+  margin-left: -0.25rem;
+  margin-bottom: 0.25rem;
+  color: #e5e9f0;
+
+  @include mix.mobile {
+    --fs-xlarge: 2.5rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+.introRole {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: -0.5rem;
+  font-size: 1.25rem;
+  color: var(--clr-accent-2);
+
+  i {
+    font-size: 1.65rem;
+  }
+
+  @include mix.desktop {
+    font-size: var(--fs-large);
+    color: var(--clr-secondary-3);
+  }
+}
+
+.githubArea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: var(--fs-small);
+  word-break: break-all;
+
+  @include mix.mobile {
+    gap: 1rem;
+    max-width: 20.625rem; // 330px
+  }
+}
+
+.githubComment {
+  color: var(--clr-secondary);
+}
+
+.githubLinkWrapper {
+  font-family: "FiraCode Medium", sans-serif;
+}
+
+.rightColumn {
+  position: relative;
+
+  @include mix.mobile {
+    display: none;
+  }
+}
+
+.snippets {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.snippetImage {
+  position: relative;
+  height: 11rem; // 176px
+  margin-bottom: 0.35rem;
+}
+
+.blurs {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(80%, -50%);
+
+  @include mix.mobile {
+    transform: scale(1.75) translate(25%, -28.5%);
+  }
+}

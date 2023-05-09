@@ -1,0 +1,103 @@
+@use "@/styles/abstract/mixins" as mix;
+
+.projectsArea {
+  color: var(--clr-secondary);
+
+  @include mix.desktop {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    grid-template-rows: 2.8rem auto;
+    grid-template-areas:
+      "sidebar tabs"
+      "sidebar cards";
+  }
+}
+
+.cardsGrid {
+  grid-area: cards;
+  display: grid;
+  gap: 2rem;
+  padding: 2rem;
+
+  @include mix.small-screen {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mix.medium-screen {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include mix.desktop {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    padding: 3rem;
+  }
+
+  @include mix.large-screen {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-primary-3);
+  border: 1px solid var(--clr-lines);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.cardTitle {
+  margin-bottom: 0.75rem;
+  font-size: var(--fs-normal);
+
+  span:first-child {
+    margin-right: 1rem;
+    font-family: "FiraCode Bold", sans-serif;
+    color: #5565e8;
+  }
+}
+
+.cardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+
+  padding: 1rem 1.5rem 1.5rem;
+  line-height: 1.5;
+}
+
+.cardImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.8/1;
+}
+
+.cardTechs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: auto;
+  padding-bottom: 1rem;
+}
+
+.cardTech {
+  padding: 0.15rem 0.35rem;
+  background-color: var(--clr-secondary);
+  color: #000;
+  border-radius: 2px;
+  font-size: 0.9rem;
+}
+
+.cardButtons {
+  display: flex;
+  gap: 0.5rem;
+}
