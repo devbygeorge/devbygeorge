@@ -4,11 +4,6 @@ export default {
   type: "document",
   fields: [
     {
-      name: "category",
-      title: "Category",
-      type: "string",
-    },
-    {
       name: "title",
       title: "Title",
       type: "string",
@@ -37,24 +32,13 @@ export default {
       type: "string",
     },
     {
-      title: "Tech",
-      name: "tech",
+      title: "Categories",
+      name: "categories",
       type: "array",
       of: [
         {
-          type: "object",
-          fields: [
-            {
-              title: "Name",
-              name: "name",
-              type: "string",
-            },
-            {
-              title: "Slug",
-              name: "slug",
-              type: "string",
-            },
-          ],
+          type: "reference",
+          to: [{ type: "category" }],
         },
       ],
     },
