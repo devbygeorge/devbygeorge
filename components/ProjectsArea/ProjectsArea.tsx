@@ -61,6 +61,10 @@ export default function ProjectsArea({ projects, categories }: Props) {
                     priority
                     fill
                     sizes="(max-width: 768px) 100vw"
+                    style={{
+                      borderTopLeftRadius: "1rem",
+                      borderTopRightRadius: "1rem",
+                    }}
                   />
                 </div>
                 <div className={s.cardContent}>
