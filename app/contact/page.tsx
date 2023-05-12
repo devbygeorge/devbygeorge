@@ -24,15 +24,17 @@ const sidebarData = [
   },
   {
     title: "find-me-also-in",
-    type: "default",
+    type: "links",
     items: [
       {
         icon: "ri-external-link-line",
         label: "YouTube channel",
+        link: "https://www.youtube.com/@devbygeorge",
       },
       {
         icon: "ri-external-link-line",
-        label: "Twitch profile",
+        label: "Twitter profile",
+        link: "https://twitter.com/devbygeorge",
       },
     ],
   },

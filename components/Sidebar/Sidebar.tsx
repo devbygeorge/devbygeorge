@@ -85,6 +85,22 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
       });
     }
 
+    if (type === "links") {
+      return items.map((item, i) => (
+        <li key={i}>
+          <a
+            className={`${s.item} ${s.link}`}
+            href={item.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i className={item.icon}></i>
+            <span className={s.label}>{item.label}</span>
+          </a>
+        </li>
+      ));
+    }
+
     return items.map((item, i) => (
       <li key={i} className={s.item}>
         <i className={item.icon}></i>
@@ -111,11 +127,12 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
     <div className={s.sidebar}>
       {data.map(({ title, type, items }, i) => (
         <div key={i} className={s.window}>
-          <div className={s.headline} onClick={() => toggleWindow(i)}>
-            <i
-              className="ri-arrow-drop-down-fill"
-              data-closed={closedWindows.includes(i) ? true : false}
-            ></i>
+          <div
+            className={s.headline}
+            onClick={() => toggleWindow(i)}
+            data-closed={closedWindows.includes(i) ? true : false}
+          >
+            <i className="ri-arrow-drop-down-fill"></i>
             <span>{title}</span>
           </div>
           <ul
