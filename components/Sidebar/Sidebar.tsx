@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import { Category } from "typings";
 
 import s from "./Sidebar.module.scss";
@@ -24,6 +28,8 @@ type Item = {
 };
 
 export default function Sidebar({ data, setChosenCategories }: Props) {
+  const [closedWindows, setClosedWindows] = useState<any>([]);
+
   const renderItems = (type: string, items: any[]) => {
     if (type === "checkbox") {
       return items.map((item, i) => (
@@ -87,15 +93,39 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
     ));
   };
 
+  const toggleWindow = (index: number) => {
+    setClosedWindows((prevState: any) => {
+      let indexOf = prevState.indexOf(index);
+      let newState = [...prevState]; // Make a copy of the prevState array
+      if (indexOf >= 0) {
+        // Change the condition to check for index >= 0
+        newState[indexOf] = null;
+      } else {
+        newState.push(index);
+      }
+      return newState;
+    });
+  };
+
+  console.log(closedWindows);
+
   return (
     <div className={s.sidebar}>
       {data.map(({ title, type, items }, i) => (
         <div key={i} className={s.window}>
-          <h2 className={s.headline}>
-            <i className="ri-arrow-drop-down-fill"></i>
+          <div className={s.headline} onClick={() => toggleWindow(i)}>
+            <i
+              className="ri-arrow-drop-down-fill"
+              data-closed={closedWindows.includes(i) ? true : false}
+            ></i>
             <span>{title}</span>
-          </h2>
-          <ul className={s.list}>{renderItems(type, items)}</ul>
+          </div>
+          <ul
+            className={s.list}
+            data-closed={closedWindows.includes(i) ? true : false}
+          >
+            {renderItems(type, items)}
+          </ul>
         </div>
       ))}
     </div>
