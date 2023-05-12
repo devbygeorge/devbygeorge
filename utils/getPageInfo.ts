@@ -1,7 +1,7 @@
 import sanityUrlBuilder from "./sanityUrlBuilder";
 
-const query = '*[_type == "pageInfo"][0]';
-const url = sanityUrlBuilder(query);
+const groqQuery = '*[_type == "pageInfo" && !(_id in path("drafts.**"))][0]';
+const url = sanityUrlBuilder(groqQuery);
 
 async function getPageInfo() {
   const response = await fetch(url, {

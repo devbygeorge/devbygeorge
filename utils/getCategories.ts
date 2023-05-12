@@ -1,8 +1,8 @@
 import sanityUrlBuilder from "./sanityUrlBuilder";
 
 /* Use this to order categories alphabetically: | order(slug asc) */
-const query = '*[_type == "category"]';
-const url = sanityUrlBuilder(query);
+const groqQuery = '*[_type == "category" && !(_id in path("drafts.**"))]';
+const url = sanityUrlBuilder(groqQuery);
 
 async function getCategories() {
   const response = await fetch(url, {

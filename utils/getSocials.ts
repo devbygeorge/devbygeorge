@@ -1,7 +1,7 @@
 import sanityUrlBuilder from "./sanityUrlBuilder";
 
-const query = '*[_type == "social"]';
-const url = sanityUrlBuilder(query);
+const groqQuery = '*[_type == "social" && !(_id in path("drafts.**"))]';
+const url = sanityUrlBuilder(groqQuery);
 
 async function getSocials() {
   const response = await fetch(url, {
