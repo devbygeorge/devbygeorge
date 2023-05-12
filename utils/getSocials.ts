@@ -1,15 +1,15 @@
-import { groq } from "next-sanity";
+import sanityUrlBuilder from "./sanityUrlBuilder";
 
-import { sanityClient } from "sanity";
-
-const query = groq`
-  *[_type == "social"]
-`;
+const query = '*[_type == "social"]';
+const url = sanityUrlBuilder(query);
 
 async function getSocials() {
-  const socials = await sanityClient.fetch(query);
-
-  return socials;
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${process.env.SANITY_TOKEN}` },
+    next: { revalidate: 60 },
+  });
+  const { result } = await response.json();
+  return result;
 }
 
 export default getSocials;

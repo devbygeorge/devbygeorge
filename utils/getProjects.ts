@@ -1,18 +1,15 @@
-import { groq } from "next-sanity";
+import sanityUrlBuilder from "./sanityUrlBuilder";
 
-import { sanityClient } from "sanity";
-
-const query = groq`
-  *[_type == "project"]{
-    ...,
-    categories[]->,
-  }
-`;
+const query = '*[_type == "project"]{...,categories[]->,}';
+const url = sanityUrlBuilder(query);
 
 async function getProjects() {
-  const projects = await sanityClient.fetch(query);
-
-  return projects;
+  const response = await fetch(url, {
+    headers: { Authorization: `Bearer ${process.env.SANITY_TOKEN}` },
+    next: { revalidate: 60 },
+  });
+  const { result } = await response.json();
+  return result;
 }
 
 export default getProjects;
