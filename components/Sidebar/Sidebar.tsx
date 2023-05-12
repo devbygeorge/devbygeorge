@@ -107,8 +107,6 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
     });
   };
 
-  console.log(closedWindows);
-
   return (
     <div className={s.sidebar}>
       {data.map(({ title, type, items }, i) => (
