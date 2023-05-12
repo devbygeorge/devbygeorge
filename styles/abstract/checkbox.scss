@@ -30,9 +30,11 @@
   border: 1px solid var(--clr-secondary);
 }
 
-/* On mouse-over, add a grey background color */
-.checkbox-wrapper:hover input ~ .checkmark {
-  background-color: var(--clr-secondary);
+@media (hover: hover) {
+  /* On mouse-over, add a blue background color only on hoverable devices*/
+  .checkbox-wrapper:hover input ~ .checkmark {
+    background-color: var(--clr-secondary);
+  }
 }
 
 /* When the checkbox is checked, add a blue background */
