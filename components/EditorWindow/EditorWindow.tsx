@@ -1,14 +1,12 @@
-"use client";
-import { useEffect, useState } from "react";
-
 import s from "./EditorWindow.module.scss";
 
 type Props = {
   about: string;
 };
 
+const maxCharacters = process.env.NEXT_PUBLIC_ABOUT_MAX_CHARACTERS;
+
 export default function EditorWindow({ about }: Props) {
-  const [maxCharacters, setMaxCharacters] = useState(50);
   const newRegexp = new RegExp(`.{0,${maxCharacters}}\\b`, "g");
   const splittedParagraph = about.match(newRegexp);
 
