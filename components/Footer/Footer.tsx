@@ -11,6 +11,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             href="https://twitter.com/devbygeorge"
+            aria-label="Twitter Profile"
           >
             <i className="ri-twitter-fill icon"></i>
           </a>
@@ -21,6 +22,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             href="https://www.linkedin.com/in/giorgipasieshvili"
+            aria-label="Linkedin Profile"
           >
             <i className="ri-linkedin-fill icon"></i>
           </a>
@@ -32,6 +34,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             href="https://github.com/devbygeorge"
+            aria-label="Github Profile"
           >
             <span className={s.username}>@devbygeorge</span>
             <i className="ri-github-fill icon" data-active-desktop="true"></i>

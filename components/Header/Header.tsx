@@ -29,7 +29,11 @@ export default function Header() {
         </h1>
 
         {/* Mobile Toggle */}
-        <button className={s.toggle} onClick={toggleMenu}>
+        <button
+          className={s.toggle}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
           <i
             className="ri-menu-line small-transition-mobile"
             data-active={isMenuOpen ? "false" : "true"}
