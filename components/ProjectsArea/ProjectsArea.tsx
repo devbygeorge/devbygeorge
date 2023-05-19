@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 
 import Sidebar from "@/components/Sidebar";
@@ -45,58 +46,68 @@ export default function ProjectsArea({ projects, categories }: Props) {
       <Sidebar data={sidebarData} setChosenCategories={setChosenCategories} />
       <Tabs label="React; Vue" />
       <div className={s.projects}>
-        <div className={s.cardsGrid}>
-          {filteredProjects.map((project) => (
-            <div key={project["_id"]} className={s.cardWrapper}>
-              <div className={s.cardTitle}>
-                <span>{project["title"]}</span>
-                <span>{"// tempo"}</span>
-              </div>
-              <div className={s.cardItem}>
-                <div className={s.cardImage}>
-                  <Image
-                    src={urlFor(project["image"]).url()}
-                    alt={project["title"]}
-                    quality={100}
-                    priority
-                    fill
-                    sizes="(max-width: 768px) 100vw"
-                    style={{
-                      borderTopLeftRadius: "1rem",
-                      borderTopRightRadius: "1rem",
-                    }}
-                  />
+        <motion.div layout className={s.cardsGrid}>
+          <AnimatePresence>
+            {filteredProjects.map((project) => (
+              <motion.div
+                layout
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                key={project["_id"]}
+                className={s.cardWrapper}
+              >
+                <div className={s.cardTitle}>
+                  <span>{project["title"]}</span>
+                  <span>{"// tempo"}</span>
                 </div>
-                <div className={s.cardContent}>
-                  <p>{project["description"]}</p>
-                  <ul className={s.cardTechs}>
-                    {project["categories"].map((category) => (
-                      <li key={category["_id"]} className={s.cardTech}>
-                        <span>{category["name"]}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className={s.cardButtons}>
-                    <a
-                      target="_blank"
-                      href={project["github"]}
-                      className="button button--secondary"
-                    >
-                      view-project
-                    </a>
-                    <a
-                      target="_blank"
-                      href={project["demo"]}
-                      className="button button--primary"
-                    >
-                      view-demo
-                    </a>
+                <div className={s.cardItem}>
+                  <div className={s.cardImage}>
+                    <Image
+                      src={urlFor(project["image"]).url()}
+                      alt={project["title"]}
+                      quality={100}
+                      priority
+                      fill
+                      sizes="(max-width: 768px) 100vw"
+                      style={{
+                        borderTopLeftRadius: "1rem",
+                        borderTopRightRadius: "1rem",
+                      }}
+                    />
+                  </div>
+                  <div className={s.cardContent}>
+                    <p>{project["description"]}</p>
+                    <ul className={s.cardTechs}>
+                      {project["categories"].map((category) => (
+                        <li key={category["_id"]} className={s.cardTech}>
+                          <span>{category["name"]}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div className={s.cardButtons}>
+                      <a
+                        target="_blank"
+                        href={project["github"]}
+                        className="button button--secondary"
+                      >
+                        view-project
+                      </a>
+                      <a
+                        target="_blank"
+                        href={project["demo"]}
+                        className="button button--primary"
+                      >
+                        view-demo
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </main>
   );
