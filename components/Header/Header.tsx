@@ -35,18 +35,18 @@ export default function Header() {
           aria-label="Toggle menu"
         >
           <i
-            className="ri-menu-line small-transition-mobile"
+            className="ri-menu-line fade-mobile"
             data-active={isMenuOpen ? "false" : "true"}
           />
           <i
-            className="ri-close-line small-transition-mobile"
+            className="ri-close-line fade-mobile"
             data-active={isMenuOpen ? "true" : "false"}
           />
         </button>
 
         {/* Navigation Menu */}
         <ul
-          className={`${s.menu} small-transition-mobile`}
+          className={`${s.menu} fade-mobile`}
           data-active={isMenuOpen ? "true" : "false"}
         >
           <li className={s.item}>

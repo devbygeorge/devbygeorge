@@ -141,9 +141,9 @@ body {
   opacity: 0.1;
 }
 
-.small-transition-mobile {
+.fade-mobile {
   @include mix.mobile {
-    transition: 0.3s;
+    transition: 300ms ease-in-out;
     visibility: hidden;
     opacity: 0;
 
@@ -154,9 +154,9 @@ body {
   }
 }
 
-.small-transition-desktop {
+.fade-desktop {
   @include mix.desktop {
-    transition: 0.3s;
+    transition: 300ms ease-in-out;
     visibility: hidden;
     opacity: 0;
 
