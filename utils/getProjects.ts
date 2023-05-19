@@ -1,7 +1,7 @@
 import sanityUrlBuilder from "./sanityUrlBuilder";
 
 const groqQuery =
-  '*[_type == "project" && !(_id in path("drafts.**"))]{...,categories[]->,}';
+  '*[_type == "project" && !(_id in path("drafts.**"))] | order(name desc) {...,categories[]->,}';
 const url = sanityUrlBuilder(groqQuery);
 
 async function getProjects() {
