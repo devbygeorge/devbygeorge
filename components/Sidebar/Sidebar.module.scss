@@ -15,19 +15,12 @@
   padding: 0.375rem;
   color: var(--clr-white);
   border-top: 1px solid var(--clr-lines);
+  cursor: pointer;
 
   i {
     font-size: 2rem;
     transition: 0.3s ease-out;
   }
-
-  &[data-closed="true"] {
-    i {
-      transform: rotate(-90deg);
-    }
-  }
-
-  cursor: pointer;
 }
 
 .window:first-child {
@@ -52,13 +45,17 @@
   border-top-color: var(--clr-lines);
 
   @include mix.mobile {
-    &[data-closed="false"] {
-      max-height: 150px;
-      overflow-y: auto;
-    }
+    max-height: 200px;
+    overflow-y: auto;
+  }
+}
+
+.window[data-closed="true"] {
+  .headline i {
+    transform: rotate(-90deg);
   }
 
-  &[data-closed="true"] {
+  .list {
     max-height: 0;
     padding-block: 0;
     border-top-color: transparent;

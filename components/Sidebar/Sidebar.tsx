@@ -28,7 +28,7 @@ type Item = {
 };
 
 export default function Sidebar({ data, setChosenCategories }: Props) {
-  const [closedWindows, setClosedWindows] = useState<any>([]);
+  const [closedWindows, setClosedWindows] = useState<number[]>([]);
 
   const renderItems = (type: string, items: any[]) => {
     if (type === "checkbox") {
@@ -59,7 +59,7 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
       ));
     }
 
-    if (type === "fileSystem") {
+    if (type === "file-system") {
       return items.map((item, i) => {
         if (item.isDir) {
           return (
@@ -110,37 +110,28 @@ export default function Sidebar({ data, setChosenCategories }: Props) {
   };
 
   const toggleWindow = (index: number) => {
-    setClosedWindows((prevState: any) => {
-      let indexOf = prevState.indexOf(index);
-      let newState = [...prevState]; // Make a copy of the prevState array
-      if (indexOf >= 0) {
-        // Change the condition to check for index >= 0
-        newState[indexOf] = null;
+    setClosedWindows((prevState) => {
+      if (prevState.includes(index)) {
+        return prevState.filter((item) => item !== index);
       } else {
-        newState.push(index);
+        return [...prevState, index];
       }
-      return newState;
     });
   };
 
   return (
     <div className={s.sidebar}>
       {data.map(({ title, type, items }, i) => (
-        <div key={i} className={s.window}>
-          <div
-            className={s.headline}
-            onClick={() => toggleWindow(i)}
-            data-closed={closedWindows.includes(i) ? true : false}
-          >
+        <div
+          key={i}
+          className={s.window}
+          data-closed={closedWindows.includes(i) ? true : false}
+        >
+          <div className={s.headline} onClick={() => toggleWindow(i)}>
             <i className="ri-arrow-drop-down-fill"></i>
             <span>{title}</span>
           </div>
-          <ul
-            className={s.list}
-            data-closed={closedWindows.includes(i) ? true : false}
-          >
-            {renderItems(type, items)}
-          </ul>
+          <ul className={s.list}>{renderItems(type, items)}</ul>
         </div>
       ))}
     </div>

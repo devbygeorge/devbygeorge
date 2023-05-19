@@ -10,7 +10,7 @@ import getPageInfo from "@/utils/getPageInfo";
 const sidebarData = [
   {
     title: "personal-info",
-    type: "fileSystem",
+    type: "file-system",
     items: [
       {
         icon: "ri-folder-3-fill",
